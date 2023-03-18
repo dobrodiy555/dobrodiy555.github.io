@@ -13,6 +13,10 @@
 
       button {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        /* border: 2px solid rgba(54, 83, 200, 0.504); */
+        padding: 8px 18px;
+        font-size: 16px;
       }
 
       #container {
@@ -28,8 +32,7 @@
   </head>
 
   <body onload="checkCookie()">
-    <h1 align=" center">Tic-Tac-Toe</h1>
-    <h3 align="center">My pet project on JS</h3>
+    <h1 align=" center">Крестики-нолики</h1>
     <form name="game">
       <table align="center" border="3" bgcolor="#77CB5F">
         <tbody>
@@ -89,31 +92,32 @@
 
 
     <div id="container">
-      <p> Result of the game: <span id="result_field"></span> </p>
+      <p> Результат игры: <span id="result_field"></span> </p>
 
       <!-- reload the page when clicking button (as if F5) -->
-      <button id="button" onclick="window.location.reload(true)">Play again</button>
+      <button id="button" onclick="window.location.reload(true)">Играть снова</button>
 
       <br><br>
 
       <table border="0" id="stat_table" align="center">
         <tr>
-          <td>User victories:</span></td>
+          <td>Твои победы:</span></td>
           <td><span id="user_vict_field"></span></td>
         </tr>
         <tr>
-          <td>Computer victories:</td>
+          <td>Победы компьютера:</td>
           <td><span id="comp_vict_field"></span></td>
         </tr>
         <tr>
-          <td>Ties:</td>
+          <td>Ничьи:</td>
           <td><span id="ties_field"></span></td>
         </tr>
       </table>
     </div>
 
     <script>
-    let game_counter = getCookie("gameCounter") ? getCookie("gameCounter") : 1;
+
+      let game_counter = getCookie("gameCounter") ? getCookie("gameCounter") : 1;
       var cell_elements = document.getElementsByClassName(" cell");
       if (game_counter & 2 != 0) {
         for (var i = 0; i < cell_elements.length; i++) {

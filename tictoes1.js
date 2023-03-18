@@ -211,7 +211,7 @@ function check_game_over() {
 
   // check if user won
    if ( compareArrays(win_arr1, arr_of_user_moves) || compareArrays(win_arr2, arr_of_user_moves) || compareArrays(win_arr3, arr_of_user_moves) || compareArrays(win_arr4, arr_of_user_moves) || compareArrays(win_arr5, arr_of_user_moves) || compareArrays(win_arr6, arr_of_user_moves) || compareArrays(win_arr7, arr_of_user_moves) || compareArrays(win_arr8, arr_of_user_moves) ) {
-     result_field.innerHTML = "User won!";
+     result_field.innerHTML = "Ты победил(а)!";
      let user_victories = getCookie("userVictories") ? getCookie("userVictories") : 0; // нужно еще раз здесь вытянуть из куков переменную userVictories, иначе не видит для куки
      user_victories++;
      user_vict_field.innerHTML = user_victories;
@@ -221,7 +221,7 @@ function check_game_over() {
 
    // check if comp won
    if ( compareArrays(win_arr1, arr_of_comp_moves) || compareArrays(win_arr2, arr_of_comp_moves) || compareArrays(win_arr3, arr_of_comp_moves) || compareArrays(win_arr4, arr_of_comp_moves) || compareArrays(win_arr5, arr_of_comp_moves) || compareArrays(win_arr6, arr_of_comp_moves) || compareArrays(win_arr7, arr_of_comp_moves) || compareArrays(win_arr8, arr_of_comp_moves) ) {
-    result_field.innerHTML = "Computer won!";
+    result_field.innerHTML = "Компьютер победил!";
     let comp_victories = getCookie("compVictories") ? getCookie("compVictories") : 0; // нужно еще раз здесь вытянуть из куков переменную comp_victories, иначе не видит для куки
     comp_victories++;
     console.log("comp victories at the end: ", comp_victories);
@@ -233,7 +233,7 @@ function check_game_over() {
 
   // check for tie
   if (!arr_with_fields.length && !game_done) {
-    result_field.innerHTML = "Tie!";
+    result_field.innerHTML = "Ничья!";
     let ties = getCookie("ties") ? getCookie("ties") : 0; // нужно еще раз здесь вытянуть из куков переменную ties, иначе не видит для куки
     ties++;
     ties_field.innerHTML = ties;
