@@ -11,7 +11,11 @@
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
       }
 
-      button {
+      h1 {
+        text-align: center;
+      }
+
+      #button {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         cursor: pointer;
         /* border: 2px solid rgba(54, 83, 200, 0.504); */
@@ -23,8 +27,16 @@
         text-align: center;
       }
 
-      .win_cells {
+      .compwin_cells {
         border: 4px solid red;
+      }
+
+      .userwin_cells {
+        border: 4px solid blue;
+      }
+
+      #soundBtn {
+        text-align: center;
       }
     </style>
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -36,7 +48,7 @@
   </head>
 
   <body onload="checkCookie()">
-    <h1 align=" center">Крестики-нолики</h1>
+    <h1>Крестики-нолики</h1>
     <form name="game">
       <table align="center" border="3" bgcolor="#77CB5F">
         <tbody>
@@ -118,9 +130,39 @@
           <td><span id="ties_field">0</span></td>
         </tr>
       </table>
+      <br>
+      <div id="soundBtn">
+        <button id="snd"></button>
+      </div>
+
     </div>
 
+
+
     <script>
+
+
+      // add sound if clicked sound button (value is stored in cookies)
+      var sndBtn = document.getElementById("snd");
+      var sndActive = getCookie('sndActive') ? getCookie('sndActive') : false;
+      console.log('snd active is ', sndActive, ' at the start');
+      if (sndActive == 'on') {
+        sndBtn.textContent = 'Выключить звук';
+        sndBtn.addEventListener('click', function() {
+          sndActive = 'off';
+          setCookie('sndActive', sndActive, 60);
+          sndBtn.textContent = 'Включить звук'; 
+          console.log('snd active is: ', sndActive, ' after click');
+        })
+      } else {
+        sndBtn.textContent = 'Включить звук'; 
+        sndBtn.addEventListener("click", function () {
+          sndActive = 'on';
+          sndBtn.textContent = 'Выключить звук'; 
+          setCookie('sndActive', sndActive, 60);
+          console.log('snd active is: ', sndActive, ' after click');
+       });
+     }
 
       let game_counter = getCookie("gameCounter") ? getCookie("gameCounter") : 1;
       var cell_elements = document.getElementsByClassName(" cell");
@@ -130,7 +172,7 @@
           cell_elements[i].addEventListener("click", computer_move, { once: true });
         }
       } else {
-        computer_move();
+        // computer_move();
         for (var i = 0; i < cell_elements.length; i++) {
           if (cell_elements[i].getAttribute('src') === 'img/o.gif') {
             continue;

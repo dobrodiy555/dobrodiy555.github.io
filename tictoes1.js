@@ -113,6 +113,10 @@ function arrayInArray(haystack, needle) {
 }
 
 function user_move() {
+  // play button click sound if necessary
+  var snd = new Audio("click.wav");
+  if (sndActive == 'on') snd.play();
+
   this.src = "img/x.gif"; // display X image when clicking on any field
   var userMove = $(this).attr("id");
 
@@ -267,6 +271,10 @@ function computer_move() {
   // show comp move on frontend as zero image
   $("#" + compMove).attr("src", "img/o.gif");
 
+  // play sound
+  let oppMove = new Audio("oppmove.mp3");
+  if (sndActive == 'on') oppMove.play();
+
   // delete event handlers
   var elem = document.getElementById(compMove);
   elem.removeEventListener("click", user_move);
@@ -293,8 +301,12 @@ function check_game_over() {
     for (let i = 0; i < win_moves_arr.length; i++) {
       $("#" + win_moves_arr[i])
         .parent("td")
-        .addClass("win_cells");
+        .addClass("userwin_cells");
     }
+
+    // play sound
+    let victory = new Audio("victory.mp3");
+    if (sndActive == 'on') victory.play();
 
     // set cookie, show score
     let user_victories = getCookie("userVictories")
@@ -317,8 +329,12 @@ function check_game_over() {
     for (let i = 0; i < win_moves_arr1.length; i++) {
       $("#" + win_moves_arr1[i])
         .parent()
-        .addClass("win_cells");
+        .addClass("compwin_cells");
     }
+
+    // play sound
+    let fiasko = new Audio("fiasco.mp3");
+    if (sndActive == 'on') fiasko.play();
 
     // set cookie, show score
     let comp_victories = getCookie("compVictories")
