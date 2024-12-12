@@ -5,40 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-        background-color: azure;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      #button {
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        cursor: pointer;
-        /* border: 2px solid rgba(54, 83, 200, 0.504); */
-        padding: 8px 18px;
-        font-size: 16px;
-      }
-
-      #container {
-        text-align: center;
-      }
-
-      .compwin_cells {
-        border: 4px solid red;
-      }
-
-      .userwin_cells {
-        border: 4px solid blue;
-      }
-
-      #soundBtn {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -137,11 +104,7 @@
 
     </div>
 
-
-
     <script>
-
-
       // add sound if clicked sound button (value is stored in cookies)
       var sndBtn = document.getElementById("snd");
       var sndActive = getCookie('sndActive') ? getCookie('sndActive') : false;
@@ -165,6 +128,7 @@
      }
 
       let game_counter = getCookie("gameCounter") ? getCookie("gameCounter") : 1;
+      console.log('game counter is:', game_counter);
       var cell_elements = document.getElementsByClassName(" cell");
       if (game_counter & 2 != 0) {
         for (var i = 0; i < cell_elements.length; i++) {
@@ -172,7 +136,7 @@
           cell_elements[i].addEventListener("click", computer_move, { once: true });
         }
       } else {
-        // computer_move();
+        computer_move();
         for (var i = 0; i < cell_elements.length; i++) {
           if (cell_elements[i].getAttribute('src') === 'img/o.gif') {
             continue;
@@ -181,6 +145,7 @@
           cell_elements[i].addEventListener("click", computer_move, { once: true });
         }
       }
+
     </script>
 
   </body>
