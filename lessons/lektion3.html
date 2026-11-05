@@ -419,6 +419,10 @@
         padding: 24px
       }
 
+      #redemittel p {
+        font-weight: 400;
+      }
+
       @media(max-width:600px) {
         body {
           font-size: 15px;
@@ -571,50 +575,17 @@
     </header>
     <main>
       <nav>
-        <a href="#plan">План</a><a href="#aufbau">Структура</a><a href="#wortschatz">Лексика</a><a
-          href="#redemittel">Redemittel</a><a href="#training">Тренировка</a><a href="#schreiben">Письмо</a><a
-          href="#hausaufgabe">Домашнее задание</a>
+        <a href="#aufbau">Структура</a>
+        <a href="#wortschatz">Лексика</a>
+        <a href="#redemittel">Redemittel</a>
+        <a href="#training">Тренировка</a>
+        <a href="#schreiben">Письмо</a>
+        <a href="#hausaufgabe">Домашнее задание</a>
       </nav>
 
-      <section id="plan">
-        <h2>1. План урока — 60 минут</h2>
-        <div class="grid">
-          <div class="mini"><span class="pill">0–5 мин</span>
-            <h3>Разминка</h3>
-            <p>Обсудить тему дистанционной работы: преимущества и недостатки.</p>
-          </div>
-          <div class="mini"><span class="pill">5–15 мин</span>
-            <h3>Структура</h3>
-            <p>Разобрать обязательные элементы Forumsbeitrag и логику абзацев.</p>
-          </div>
-          <div class="mini"><span class="pill">15–25 мин</span>
-            <h3>Лексика и Redemittel</h3>
-            <p>Выучить фразы для мнения, аргументов, примеров и заключения.</p>
-          </div>
-          <div class="mini"><span class="pill">25–35 мин</span>
-            <h3>Языковая тренировка</h3>
-            <p>Выбрать подходящие фразы и связки, получить обратную связь.</p>
-          </div>
-          <div class="mini"><span class="pill">35–45 мин</span>
-            <h3>План текста</h3>
-            <p>Составить аргументы за и против и расположить их логично.</p>
-          </div>
-          <div class="mini"><span class="pill">45–57 мин</span>
-            <h3>Письмо</h3>
-            <p>Написать Forumsbeitrag и проверить его по чек-листу.</p>
-          </div>
-          <div class="mini"><span class="pill">57–60 мин</span>
-            <h3>Итог</h3>
-            <p>Назвать 2 удачные фразы и 1 пункт для улучшения.</p>
-          </div>
-        </div>
-        <div class="callout"><strong>Цель урока:</strong> ученик умеет написать связный пост на профессиональную тему,
-          высказать своё мнение, подкрепить его аргументами и сделать вывод. Это учебная тренировка в формате
-          berufliches Deutsch, а не таймированный экзамен.</div>
-      </section>
 
       <section id="aufbau">
-        <h2>2. Как строить Forumsbeitrag</h2>
+        <h2>1. Как строить Forumsbeitrag</h2>
         <p class="lead">Не нужно писать сложные длинные предложения. Важнее ответить на все пункты задания и связать
           мысли.</p>
         <div class="grid">
@@ -651,7 +622,7 @@
       </section>
 
       <section id="wortschatz">
-        <h2>3. Лексика для аргументации</h2>
+        <h2>2. Лексика для аргументации</h2>
         <p class="lead">Нажми на карточку, чтобы увидеть перевод. Попробуй сначала вспомнить значение самостоятельно.
         </p>
         <div class="controls"><button type="button" id="showWords">Показать переводы</button><button type="button"
@@ -666,8 +637,12 @@
             <div class="ru hidden">экономить время</div>
           </div>
           <div class="mini wordcard">
-            <div class="de">der Arbeitsweg / pendeln</div>
-            <div class="ru hidden">дорога на работу / ездить на работу</div>
+            <div class="de">der Arbeitsweg</div>
+            <div class="ru hidden">дорога на работу</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">pendeln</div>
+            <div class="ru hidden">ездить на работу</div>
           </div>
           <div class="mini wordcard">
             <div class="de">die Produktivität</div>
@@ -709,7 +684,7 @@
       </section>
 
       <section id="redemittel">
-        <h2>4. Полезные Redemittel</h2>
+        <h2>3. Полезные Redemittel</h2>
         <div class="grid">
           <div class="mini">
             <h3>Ввести тему</h3>
@@ -756,7 +731,7 @@
       </section>
 
       <section id="training">
-        <h2>5. Тренировка Redemittel и связок</h2>
+        <h2>4. Тренировка Redemittel и связок</h2>
         <p class="lead">Выбери лучший вариант в каждом поле и нажми «Проверить». Каждый ответ будет отмечен отдельно.
         </p>
         <div id="phraseQuiz">
@@ -765,7 +740,7 @@
             <div class="ru">«В настоящее время часто обсуждают, следует ли…»</div><select aria-label="Ответ 1">
               <option value="">— Выбери фразу —</option>
               <option value="1">Ich bin dagegen, dass …</option>
-              <option value="2">Heutzutage wird häufig darüber diskutiert, ob …</option>
+              <option value="2">Habt ihr schon davon gehört, dass …</option>
               <option value="3">Zum Schluss möchte ich sagen …</option>
             </select>
             <div class="result"></div>
@@ -837,7 +812,8 @@
             </select>
             <div class="result"></div>
           </div>
-          <div class="question" data-answer="obwohl"><strong>8.</strong> ___ man zu Hause arbeitet, kann die
+          <div class="question" data-answer="obwohl"><strong>8.</strong> ___ man zu Hause arbeitet und viel Zeit damit
+            spart, kann die
             Kommunikation im Team schwierig sein.
             <select>
               <option value="">Выбери связку</option>
@@ -864,7 +840,7 @@
       </section>
 
       <section id="planung">
-        <h2>6. Планируем содержание</h2>
+        <h2>5. Планируем содержание</h2>
         <p>Тема форума: <strong>Sollten Beschäftigte öfter im Homeoffice arbeiten?</strong> — Должны ли сотрудники чаще
           работать из дома?</p>
         <div class="callout"><strong>Задание:</strong> напиши пост для рабочего онлайн-форума. Вырази своё мнение,
@@ -911,7 +887,7 @@
       </section>
 
       <section id="schreiben">
-        <h2>7. Пишем Forumsbeitrag</h2>
+        <h2>6. Пишем Forumsbeitrag</h2>
         <div class="callout"><strong>Aufgabe:</strong> Sie schreiben einen Beitrag in einem Online-Forum zum Thema
           „Homeoffice im Berufsleben“.<br><br>• Äußern Sie Ihre Meinung zum Thema.<br>• Nennen Sie Vorteile und
           Nachteile.<br>• Geben Sie ein Beispiel aus dem Berufsalltag oder Alltag.<br>• Schlagen Sie eine mögliche
@@ -958,7 +934,7 @@
       </section>
 
       <section id="hausaufgabe">
-        <h2>8. Домашнее задание</h2>
+        <h2>7. Домашнее задание</h2>
         <p><strong>Тема:</strong> „Sollten Unternehmen ihren Mitarbeitenden flexible Arbeitszeiten anbieten?“</p>
         <p>Напиши Forumsbeitrag на 120–180 слов и выполни четыре пункта:</p>
         <ol>
