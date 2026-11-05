@@ -77,11 +77,8 @@
     <div id="container">
       <p> Результат игры: <span id="result_field"></span> </p>
 
-      <br>
       <!-- reload the page when clicking button (as if F5) -->
       <button id="button" onclick="window.location.reload(true)">Играть снова</button>
-
-      <br><br>
 
       <table border="0" id="stat_table" align="center">
         <tr>
@@ -97,7 +94,7 @@
           <td><span id="ties_field">0</span></td>
         </tr>
       </table>
-      <br>
+
       <div id="soundBtn">
         <button id="snd"></button>
       </div>
@@ -111,21 +108,21 @@
       console.log('snd active is ', sndActive, ' at the start');
       if (sndActive == 'on') {
         sndBtn.textContent = 'Выключить звук';
-        sndBtn.addEventListener('click', function() {
+        sndBtn.addEventListener('click', function () {
           sndActive = 'off';
           setCookie('sndActive', sndActive, 60);
-          sndBtn.textContent = 'Включить звук'; 
+          sndBtn.textContent = 'Включить звук';
           console.log('snd active is: ', sndActive, ' after click');
         })
       } else {
-        sndBtn.textContent = 'Включить звук'; 
+        sndBtn.textContent = 'Включить звук';
         sndBtn.addEventListener("click", function () {
           sndActive = 'on';
-          sndBtn.textContent = 'Выключить звук'; 
+          sndBtn.textContent = 'Выключить звук';
           setCookie('sndActive', sndActive, 60);
           console.log('snd active is: ', sndActive, ' after click');
-       });
-     }
+        });
+      }
 
       let game_counter = getCookie("gameCounter") ? getCookie("gameCounter") : 1;
       console.log('game counter is:', game_counter);

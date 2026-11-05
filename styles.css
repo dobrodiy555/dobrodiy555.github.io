@@ -1,18 +1,23 @@
 body {
   background-color: azure;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 h1 {
   text-align: center;
 }
 
+tbody {
+  font-size: 14px;
+}
+
 #button {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   cursor: pointer;
   /* border: 2px solid rgba(54, 83, 200, 0.504); */
   padding: 8px 18px;
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
 #container {
@@ -29,4 +34,5 @@ h1 {
 
 #soundBtn {
   text-align: center;
+  margin-top: 10px;
 }

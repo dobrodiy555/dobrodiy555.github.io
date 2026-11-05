@@ -8,16 +8,7 @@ let win_arr5 = ["1b", "2b", "3b"];
 let win_arr6 = ["1c", "2c", "3c"];
 let win_arr7 = ["1a", "2b", "3c"];
 let win_arr8 = ["1c", "2b", "3a"];
-let arrayOfWinArrays = [
-  win_arr1,
-  win_arr2,
-  win_arr3,
-  win_arr4,
-  win_arr5,
-  win_arr6,
-  win_arr7,
-  win_arr8,
-];
+let arrayOfWinArrays = [win_arr1, win_arr2, win_arr3, win_arr4, win_arr5, win_arr6, win_arr7, win_arr8];
 let arr_of_comp_moves = [];
 let arr_of_user_moves = [];
 let game_done = false;
@@ -61,10 +52,7 @@ function compareArrays(arr1, arr2) {
       }
     }
   }
-  if (
-    res_arr.length === arr1.length &&
-    res_arr.every((element, index) => element === arr1[index])
-  ) {
+  if (res_arr.length === arr1.length && res_arr.every((element, index) => element === arr1[index])) {
     return true;
   }
   return false; // можно без else
@@ -114,8 +102,8 @@ function arrayInArray(haystack, needle) {
 
 function user_move() {
   // play button click sound if necessary
-  var snd = new Audio("click.wav");
-  if (sndActive == 'on') snd.play();
+  var snd = new Audio("sounds/click.wav");
+  if (sndActive == "on") snd.play();
 
   this.src = "img/x.gif"; // display X image when clicking on any field
   var userMove = $(this).attr("id");
@@ -158,93 +146,44 @@ function computer_move() {
   let ar8 = array_intersect(arr_of_comp_moves, win_arr8);
 
   // follow own winning strategy
-  if (
-    ar1.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr1, arr_of_comp_moves))
-  ) {
+  if (ar1.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr1, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr1, arr_of_comp_moves);
-  } else if (
-    ar2.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr2, arr_of_comp_moves))
-  ) {
+  } else if (ar2.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr2, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr2, arr_of_comp_moves);
-  } else if (
-    ar3.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr3, arr_of_comp_moves))
-  ) {
+  } else if (ar3.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr3, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr3, arr_of_comp_moves);
-  } else if (
-    ar4.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr4, arr_of_comp_moves))
-  ) {
+  } else if (ar4.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr4, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr4, arr_of_comp_moves);
-  } else if (
-    ar5.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr5, arr_of_comp_moves))
-  ) {
+  } else if (ar5.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr5, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr5, arr_of_comp_moves);
-  } else if (
-    ar6.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr6, arr_of_comp_moves))
-  ) {
+  } else if (ar6.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr6, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr6, arr_of_comp_moves);
-  } else if (
-    ar7.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr7, arr_of_comp_moves))
-  ) {
+  } else if (ar7.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr7, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr7, arr_of_comp_moves);
-  } else if (
-    ar8.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr8, arr_of_comp_moves))
-  ) {
+  } else if (ar8.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr8, arr_of_comp_moves))) {
     var compMove = arrayDiff(win_arr8, arr_of_comp_moves);
 
     // then check against quick win of user
-  } else if (
-    arr1.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr1, arr_of_user_moves))
-  ) {
+  } else if (arr1.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr1, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr1, arr_of_user_moves);
-  } else if (
-    arr2.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr2, arr_of_user_moves))
-  ) {
+  } else if (arr2.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr2, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr2, arr_of_user_moves);
-  } else if (
-    arr3.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr3, arr_of_user_moves))
-  ) {
+  } else if (arr3.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr3, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr3, arr_of_user_moves);
-  } else if (
-    arr4.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr4, arr_of_user_moves))
-  ) {
+  } else if (arr4.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr4, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr4, arr_of_user_moves);
-  } else if (
-    arr5.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr5, arr_of_user_moves))
-  ) {
+  } else if (arr5.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr5, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr5, arr_of_user_moves);
-  } else if (
-    arr6.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr6, arr_of_user_moves))
-  ) {
+  } else if (arr6.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr6, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr6, arr_of_user_moves);
-  } else if (
-    arr7.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr7, arr_of_user_moves))
-  ) {
+  } else if (arr7.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr7, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr7, arr_of_user_moves);
-  } else if (
-    arr8.length == 2 &&
-    arrayInArray(arr_with_fields, arrayDiff(win_arr8, arr_of_user_moves))
-  ) {
+  } else if (arr8.length == 2 && arrayInArray(arr_with_fields, arrayDiff(win_arr8, arr_of_user_moves))) {
     var compMove = arrayDiff(win_arr8, arr_of_user_moves); // array
 
     // if nothing matched, just choose random move
   } else {
-    var compMove =
-      arr_with_fields[Math.floor(Math.random() * arr_with_fields.length)]; // string
+    var compMove = arr_with_fields[Math.floor(Math.random() * arr_with_fields.length)]; // string
   }
 
   // remove from fields
@@ -268,19 +207,18 @@ function computer_move() {
   win_arr7 = ["1a", "2b", "3c"];
   win_arr8 = ["1c", "2b", "3a"];
 
-  // show comp move on frontend as zero image
-  $("#" + compMove).attr("src", "img/o.gif");
-
-  // play sound
-  let oppMove = new Audio("oppmove.mp3");
-  if (sndActive == 'on') oppMove.play();
-
-  // delete event handlers
-  var elem = document.getElementById(compMove);
-  elem.removeEventListener("click", user_move);
-  elem.removeEventListener("click", computer_move);
-
-  check_game_over();
+  // show comp move on frontend as zero image with a bit of delay to make it more realistic
+  setTimeout(() => {
+    $("#" + compMove).attr("src", "img/o.gif");
+    // play sound
+    let oppMove = new Audio("sounds/oppmove.mp3");
+    if (sndActive == "on") oppMove.play();
+    // delete event handlers
+    var elem = document.getElementById(compMove);
+    elem.removeEventListener("click", user_move);
+    elem.removeEventListener("click", computer_move);
+    check_game_over();
+  }, 500);
 }
 
 // можно добавить в эту ф-цию и проверку выигрыша игрока или компа
@@ -305,13 +243,11 @@ function check_game_over() {
     }
 
     // play sound
-    let victory = new Audio("victory.mp3");
-    if (sndActive == 'on') victory.play();
+    let victory = new Audio("sounds/victory.mp3");
+    if (sndActive == "on") victory.play();
 
     // set cookie, show score
-    let user_victories = getCookie("userVictories")
-      ? getCookie("userVictories")
-      : 0; // нужно еще раз здесь вытянуть из куков переменную userVictories, иначе не видит для куки
+    let user_victories = getCookie("userVictories") ? getCookie("userVictories") : 0; // нужно еще раз здесь вытянуть из куков переменную userVictories, иначе не видит для куки
     user_victories++;
     user_vict_field.innerHTML = user_victories;
     setCookie("userVictories", user_victories, 60);
@@ -333,13 +269,11 @@ function check_game_over() {
     }
 
     // play sound
-    let fiasko = new Audio("fiasco.mp3");
-    if (sndActive == 'on') fiasko.play();
+    let fiasko = new Audio("sounds/fiasco.mp3");
+    if (sndActive == "on") fiasko.play();
 
     // set cookie, show score
-    let comp_victories = getCookie("compVictories")
-      ? getCookie("compVictories")
-      : 0; // нужно еще раз здесь вытянуть из куков переменную comp_victories, иначе не видит для куки
+    let comp_victories = getCookie("compVictories") ? getCookie("compVictories") : 0; // нужно еще раз здесь вытянуть из куков переменную comp_victories, иначе не видит для куки
     comp_victories++;
     console.log("comp victories at the end: ", comp_victories);
     comp_vict_field.innerHTML = comp_victories;
@@ -350,6 +284,10 @@ function check_game_over() {
 
   // check for tie
   if (!arr_with_fields.length && !game_done) {
+    // play sound
+    let drawSound = new Audio("sounds/draw.mp3");
+    if (sndActive == "on") drawSound.play();
+
     result_field.innerHTML = "Ничья!";
     let ties = getCookie("ties") ? getCookie("ties") : 0; // нужно еще раз здесь вытянуть из куков переменную ties, иначе не видит для куки
     ties++;
@@ -396,12 +334,8 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  let comp_victories = getCookie("compVictories")
-    ? getCookie("compVictories")
-    : 0;
-  let user_victories = getCookie("userVictories")
-    ? getCookie("userVictories")
-    : 0;
+  let comp_victories = getCookie("compVictories") ? getCookie("compVictories") : 0;
+  let user_victories = getCookie("userVictories") ? getCookie("userVictories") : 0;
   let ties = getCookie("ties") ? getCookie("ties") : 0;
   console.log("comp victories at the start", comp_victories);
   console.log("user victories at the start", user_victories);
