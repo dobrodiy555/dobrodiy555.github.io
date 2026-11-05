@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTB B2 — Lesen und Schreiben</title>
+    <style>
+      :root {
+        --navy: #183b56;
+        --blue: #2563eb;
+        --teal: #0f766e;
+        --bg: #f4f7fb;
+        --card: #fff;
+        --text: #1f2937;
+        --muted: #64748b;
+        --line: #dbe4ee;
+        --green: #15803d;
+        --red: #b91c1c;
+        --gold: #b45309
+      }
+
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif
+      }
+
+      header {
+        background: linear-gradient(125deg, #183b56, #2563eb);
+        color: #fff;
+        padding: 38px 20px
+      }
+
+      .hero,
+      .container {
+        max-width: 1050px;
+        margin: auto
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        font-size: .78rem;
+        opacity: .85
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.1;
+        margin: .5rem 0
+      }
+
+      header p {
+        max-width: 700px;
+        color: #e5efff;
+        margin-bottom: 0
+      }
+
+      main {
+        padding: 24px 16px 60px
+      }
+
+      nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 auto 22px;
+        max-width: 1050px
+      }
+
+      nav a {
+        color: var(--navy);
+        background: #e7eef8;
+        text-decoration: none;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: .9rem
+      }
+
+      nav a:hover {
+        background: #d5e5fb
+      }
+
+      section,
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: clamp(18px, 3vw, 28px);
+        margin: 18px auto;
+        max-width: 1050px;
+        box-shadow: 0 4px 16px #17324d08
+      }
+
+      h2 {
+        color: var(--navy);
+        font-size: 1.55rem;
+        margin: 0 0 14px
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        margin: 22px 0 8px;
+        color: #244b68
+      }
+
+      .lead {
+        color: var(--muted);
+        margin-top: -5px
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px
+      }
+
+      .mini {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+        background: #fbfdff
+      }
+
+      .de {
+        font-weight: 700;
+        color: #183b56
+      }
+
+      .ru {
+        color: var(--muted);
+        font-size: .94rem
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top
+      }
+
+      th {
+        background: #eef4fa;
+        color: #183b56
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 13px;
+        margin: 9px 0;
+        background: #fff
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 650;
+        color: #244b68
+      }
+
+      button,
+      .btn {
+        border: 0;
+        border-radius: 9px;
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 15px;
+        font: inherit;
+        cursor: pointer
+      }
+
+      button:hover,
+      .btn:hover {
+        filter: brightness(.93)
+      }
+
+      button.secondary {
+        background: #e8eef6;
+        color: var(--navy)
+      }
+
+      button.teal {
+        background: var(--teal)
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0
+      }
+
+      .question {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .question:last-child {
+        border-bottom: 0
+      }
+
+      label.option {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer
+      }
+
+      label.option:hover {
+        background: #f0f6ff
+      }
+
+      input[type=radio] {
+        margin-right: 8px
+      }
+
+      input[type=text],
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        font: inherit;
+        background: #fff;
+        min-width: 0
+      }
+
+      select {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 12px;
+        padding: 13px 42px 13px 14px;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 13px;
+        background-color: #f8fbff;
+        color: #183b56;
+        font: inherit;
+        font-size: 16px;
+        line-height: 1.4;
+        box-shadow: 0 2px 5px #183b560a;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        cursor: pointer;
+        transition: border-color .18s, box-shadow .18s
+      }
+
+      select:focus,
+      input[type=text]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px #2563eb20
+      }
+
+      .question.is-correct {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        border-radius: 12px;
+        padding: 14px;
+        margin: 10px 0
+      }
+
+      .question.is-incorrect {
+        background: #fff1f2;
+        border: 1px solid #fda4af;
+        border-radius: 12px;
+        padding: 14px;
+        margin: 10px 0
+      }
+
+      .answer-feedback {
+        margin-top: 9px;
+        padding: 9px 11px;
+        border-radius: 9px;
+        font-size: .94rem;
+        font-weight: 650
+      }
+
+      .answer-feedback.correct {
+        background: #dcfce7;
+        color: #166534
+      }
+
+      .answer-feedback.incorrect {
+        background: #ffe4e6;
+        color: #9f1239
+      }
+
+      .question {
+        border-radius: 12px;
+        transition: background .2s, border-color .2s
+      }
+
+      textarea {
+        min-height: 180px;
+        resize: vertical
+      }
+
+      .feedback {
+        font-weight: 650;
+        margin-top: 10px
+      }
+
+      .correct {
+        color: var(--green)
+      }
+
+      .incorrect {
+        color: var(--red)
+      }
+
+      .timer {
+        font-size: 1.4rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 750;
+        color: var(--navy)
+      }
+
+      .pill {
+        display: inline-block;
+        background: #e0f2fe;
+        color: #075985;
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: .82rem;
+        margin: 2px
+      }
+
+      .callout {
+        border-left: 4px solid var(--teal);
+        background: #f0fdfa;
+        padding: 13px 16px;
+        border-radius: 0 10px 10px 0
+      }
+
+      .warning {
+        border-left-color: #d97706;
+        background: #fffbeb
+      }
+
+      .checklist label {
+        display: flex;
+        gap: 10px;
+        margin: 9px 0;
+        align-items: flex-start
+      }
+
+      .checklist input {
+        margin-top: 6px
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 24px
+      }
+
+      .word {
+        font-weight: 700
+      }
+
+      @media(max-width:600px) {
+        body {
+          font-size: 15px;
+          line-height: 1.55
+        }
+
+        header {
+          padding: 28px 16px
+        }
+
+        main {
+          padding: 14px 10px 36px
+        }
+
+        section,
+        .panel {
+          padding: 17px 14px;
+          border-radius: 14px;
+          margin: 12px auto
+        }
+
+        h1 {
+          font-size: clamp(1.9rem, 9vw, 2.5rem)
+        }
+
+        h2 {
+          font-size: 1.3rem
+        }
+
+        h3 {
+          font-size: 1.03rem
+        }
+
+        nav {
+          gap: 7px;
+          margin-bottom: 14px
+        }
+
+        nav a {
+          font-size: .82rem;
+          padding: 8px 11px
+        }
+
+        .grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 10px
+        }
+
+        .mini {
+          padding: 12px
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: normal;
+          font-size: .88rem
+        }
+
+        th,
+        td {
+          padding: 8px;
+          min-width: 100px
+        }
+
+        button,
+        .btn {
+          max-width: 100%;
+          min-height: 44px;
+          padding: 10px 12px
+        }
+
+        .controls {
+          gap: 8px
+        }
+
+        .controls button {
+          flex: 1 1 auto
+        }
+
+        label.option {
+          padding: 10px 8px;
+          line-height: 1.4
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+          transform: scale(1.12);
+          margin-right: 8px
+        }
+
+        textarea {
+          min-height: 220px
+        }
+
+        select {
+          font-size: 16px;
+          padding: 13px 40px 13px 12px
+        }
+
+        .question {
+          padding: 12px 8px
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff
+        }
+
+        header {
+          background: #fff;
+          color: #111;
+          padding: 10px 0
+        }
+
+        header p {
+          color: #333
+        }
+
+        nav,
+        .controls,
+        button,
+        footer {
+          display: none !important
+        }
+
+        section,
+        .panel {
+          box-shadow: none;
+          break-inside: avoid;
+          border: 1px solid #aaa
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="hero">
+        <div class="eyebrow">Deutsch-Test für den Beruf · B2</div>
+        <h1>Lesen und Schreiben</h1>
+        <p>Eine Kundenbeschwerde verstehen und professionell beantworten. Интерактивный урок для уровня A2–B1: лексика,
+          готовые фразы, чтение и тренировка письма.</p>
+      </div>
+    </header>
+    <main>
+      <nav>
+        <a href="#plan">План урока</a><a href="#wortschatz">Лексика</a><a href="#redemittel">Redemittel</a><a
+          href="#lesen">Чтение</a><a href="#schreiben">Письмо</a><a href="#hausaufgabe">Домашнее задание</a>
+      </nav>
+
+      <section id="plan">
+        <h2>1. План занятия · 60 минут</h2>
+        <div class="grid">
+          <div class="mini"><span class="pill">0–5 мин</span>
+            <h3>Einstieg</h3>Коротко обсудите, как вежливо ответить на жалобу.
+          </div>
+          <div class="mini"><span class="pill">5–15 мин</span>
+            <h3>Wortschatz</h3>Лексика жалоб, проблем и решений.
+          </div>
+          <div class="mini"><span class="pill">15–23 мин</span>
+            <h3>Redemittel</h3>Готовые конструкции и мини-задание.
+          </div>
+          <div class="mini"><span class="pill">23–35 мин</span>
+            <h3>Lesen</h3>Чтение жалобы и проверка понимания.
+          </div>
+          <div class="mini"><span class="pill">35–42 мин</span>
+            <h3>Anweisungen</h3>Выделение пяти пунктов из инструкций.
+          </div>
+          <div class="mini"><span class="pill">42–55 мин</span>
+            <h3>Schreiben</h3>Написание ответа клиенту с опорой на план.
+          </div>
+          <div class="mini"><span class="pill">55–60 мин</span>
+            <h3>Abschluss</h3>Проверка ошибок и повторение полезных фраз.
+          </div>
+        </div>
+        <div class="callout"><strong>Цель урока:</strong> понять жалобу, извлечь нужную информацию из внутренних
+          инструкций и написать вежливый ответ. Все задания тренировочные, без ограничения времени.</div>
+      </section>
+
+      <section id="wortschatz">
+        <h2>2. Wortschatz · Лексика</h2>
+        <p class="lead">Сначала попробуйте вспомнить перевод, затем нажмите на карточку.</p>
+        <div class="grid" id="vocabGrid"></div>
+        <div class="controls"><button class="secondary" id="showAllWords">Показать все переводы</button><button
+            class="secondary" id="hideAllWords">Скрыть переводы</button></div>
+        <h3>Управление глаголов</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Конструкция</th>
+              <th>Пример</th>
+              <th>Перевод</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>sich beschweren über + Akk.</b></td>
+              <td>Der Kunde beschwert sich über die lange Wartezeit.</td>
+              <td>Клиент жалуется на долгое ожидание.</td>
+            </tr>
+            <tr>
+              <td><b>sich entschuldigen für + Akk.</b></td>
+              <td>Wir entschuldigen uns für die Verspätung.</td>
+              <td>Мы извиняемся за задержку.</td>
+            </tr>
+            <tr>
+              <td><b>sich kümmern um + Akk.</b></td>
+              <td>Ich kümmere mich um Ihr Anliegen.</td>
+              <td>Я займусь вашим вопросом.</td>
+            </tr>
+            <tr>
+              <td><b>bitten um + Akk.</b></td>
+              <td>Wir bitten Sie um etwas Geduld.</td>
+              <td>Просим вас немного подождать.</td>
+            </tr>
+            <tr>
+              <td><b>informieren über + Akk.</b></td>
+              <td>Wir informieren Sie über den aktuellen Stand.</td>
+              <td>Мы сообщим вам о текущем положении дел.</td>
+            </tr>
+            <tr>
+              <td><b>sich bedanken für + Akk.</b></td>
+              <td>Wir bedanken uns für Ihre Rückmeldung.</td>
+              <td>Благодарим вас за ответ.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Упражнение: вставьте предлог</h3>
+        <div id="prepositionQuiz"></div>
+        <button id="checkPrep">Проверить ответы</button>
+        <div id="prepFeedback" class="feedback" aria-live="polite"></div>
+      </section>
+
+      <section id="redemittel">
+        <h2>3. Redemittel · Готовые фразы</h2>
+        <p class="lead">Используйте фразы как строительные блоки. Не нужно заучивать письмо целиком.</p>
+        <div class="grid" id="phraseGrid"></div>
+        <div class="controls"><button class="secondary" id="showAllPhrases">Показать переводы</button><button
+            class="secondary" id="hideAllPhrases">Скрыть переводы</button></div>
+        <h3>Мини-задание</h3>
+        <p>Подберите фразу для каждой ситуации.</p>
+        <div id="phraseQuiz"></div>
+        <button id="checkPhraseQuiz">Проверить ответы</button>
+        <div id="phraseFeedback" class="feedback" aria-live="polite"></div>
+      </section>
+
+      <section id="lesen">
+        <h2>4. Lesen · Жалоба клиента</h2>
+        <div class="callout"><b>Ситуация:</b> вы работаете в BüroPlus GmbH, которая поставляет офисное оборудование.
+          Прочитайте письмо и отметьте ключевую информацию: заказ, обещанный срок, проблему, последствия и просьбу
+          клиента.</div>
+        <div class="mini">
+          <p><b>Von:</b> Thomas Weber<br><b>Betreff:</b> Beschwerde über die verspätete Lieferung</p>
+          <p>Sehr geehrte Damen und Herren,</p>
+          <p>am 12. Oktober habe ich bei Ihnen zehn Bürostühle für unser neues Büro bestellt. Laut Auftragsbestätigung
+            sollte die Lieferung spätestens am 20. Oktober erfolgen.</p>
+          <p>Leider sind die Stühle bis heute nicht angekommen. Da unsere neuen Mitarbeiter bereits am Montag ihre
+            Arbeit aufnehmen, stellt die Verzögerung für uns ein erhebliches Problem dar. Wir mussten bereits
+            zusätzliche Arbeitsplätze organisieren, was mit einem erheblichen Zeitaufwand verbunden war.</p>
+          <p>Außerdem habe ich Ihren Kundenservice zweimal telefonisch kontaktiert. Leider konnte mir niemand mitteilen,
+            wann die Lieferung eintreffen wird.</p>
+          <p>Ich bitte Sie daher um eine schnelle Klärung der Angelegenheit. Bitte informieren Sie mich darüber, wann
+            ich mit der Lieferung rechnen kann und ob Sie uns für die entstandenen Unannehmlichkeiten entgegenkommen
+            können.</p>
+          <p>Ich erwarte Ihre Rückmeldung bis morgen Mittag.</p>
+          <p>Mit freundlichen Grüßen<br>Thomas Weber</p>
+        </div>
+        <h3>Aufgabe A · Richtig oder falsch?</h3>
+        <div id="tfQuiz"></div>
+        <h3>Aufgabe B · Multiple Choice</h3>
+        <div id="readingQuiz"></div>
+        <div class="controls"><button id="checkReading">Проверить ответы</button><button class="secondary"
+            id="resetReading">Сбросить</button></div>
+        <div id="readingFeedback" class="feedback" aria-live="polite"></div>
+      </section>
+
+      <section id="anweisungen">
+        <h2>5. Anweisungen verstehen · Инструкции руководителя</h2>
+        <div class="mini">
+          <p><b>Von:</b> Frau Becker, Teamleitung<br><b>Betreff:</b> Antwort an Herrn Weber</p>
+          <p>Hallo,</p>
+          <p>bitte beantworte die Beschwerde von Herrn Weber noch heute.</p>
+          <ol>
+            <li>Entschuldige dich für die verspätete Lieferung und die unzureichende Information durch unseren
+              Kundenservice.</li>
+            <li>Erkläre, dass es aufgrund eines technischen Fehlers bei unserem Logistikpartner zu Verzögerungen
+              gekommen ist.</li>
+            <li>Teile dem Kunden mit, dass die Lieferung voraussichtlich am Donnerstag zwischen 10 und 12 Uhr eintreffen
+              wird.</li>
+            <li>Biete ihm als Entgegenkommen einen Preisnachlass von 10 % auf die Bestellung an.</li>
+            <li>Bitte ihn um eine kurze Bestätigung, ob der vorgeschlagene Liefertermin für ihn passt.</li>
+          </ol>
+          <p>Bitte formuliere die Antwort höflich und professionell.</p>
+          <p>Viele Grüße<br>Frau Becker</p>
+        </div>
+        <h3>Notizen machen</h3>
+        <p>Запишите кратко пять обязательных пунктов ответа.</p>
+        <div class="grid">
+          <div><label for="note1">1. Entschuldigung</label><input id="note1" type="text" placeholder="Извиниться за…">
+          </div>
+          <div><label for="note2">2. Ursache</label><input id="note2" type="text" placeholder="Причина задержки…"></div>
+          <div><label for="note3">3. Liefertermin</label><input id="note3" type="text" placeholder="Дата и время…">
+          </div>
+          <div><label for="note4">4. Entgegenkommen</label><input id="note4" type="text" placeholder="Компенсация…">
+          </div>
+          <div><label for="note5">5. Rückfrage</label><input id="note5" type="text"
+              placeholder="О чём спросить клиента?"></div>
+        </div>
+        <details>
+          <summary>Показать возможные ответы</summary>
+          <ol>
+            <li>Entschuldigung für die verspätete Lieferung und die schlechte Kommunikation.</li>
+            <li>Technischer Fehler beim Logistikpartner.</li>
+            <li>Donnerstag, 10–12 Uhr.</li>
+            <li>10 % Preisnachlass.</li>
+            <li>Bestätigung, ob der Liefertermin passt.</li>
+          </ol>
+        </details>
+      </section>
+
+      <section id="schreiben">
+        <h2>6. Schreiben üben · Тренировка письма</h2>
+        <div class="callout"><b>Задание:</b> напишите ответ господину Веберу, используя пять пунктов руководителя.
+          Работайте в удобном темпе; затем сравните письмо с образцом.</div>
+        <h3>Дополнительная тренировка понимания</h3>
+        <div class="question"><b>1. Herr Weber beschwert sich darüber, dass …</b>
+          <label class="option"><input type="radio" name="exam1" value="a">a) die gelieferten Bürostühle beschädigt
+            sind.</label>
+          <label class="option"><input type="radio" name="exam1" value="b">b) die Lieferung verspätet ist und er keine
+            ausreichenden Informationen erhalten hat.</label>
+          <label class="option"><input type="radio" name="exam1" value="c">c) die Bestellung nicht bestätigt
+            wurde.</label>
+        </div>
+        <div class="question"><b>2. Die Teamleiterin weist Sie an, …</b>
+          <label class="option"><input type="radio" name="exam2" value="a">a) die Bestellung zu stornieren.</label>
+          <label class="option"><input type="radio" name="exam2" value="b">b) dem Kunden einen Preisnachlass von 10 %
+            anzubieten und einen Liefertermin mitzuteilen.</label>
+          <label class="option"><input type="radio" name="exam2" value="c">c) dem Kunden die zusätzlichen Kosten in
+            Rechnung zu stellen.</label>
+        </div>
+        <button id="checkExam">Проверить ответы</button><span id="examFeedback" class="feedback"
+          aria-live="polite"></span>
+        <h3>Напишите ответ клиенту</h3>
+        <p>Schreiben Sie eine E-Mail an Herrn Weber. Berücksichtigen Sie alle fünf Punkte aus der internen E-Mail.
+          Schreiben Sie höflich und professionell.</p>
+        <div class="callout"><b>План:</b> 1) обращение и извинение; 2) причина; 3) новый срок; 4) скидка; 5) просьба
+          подтвердить срок; 6) завершение.</div>
+        <label for="emailDraft"><b>Ваше письмо:</b></label>
+        <textarea id="emailDraft" placeholder="Sehr geehrter Herr Weber,&#10;&#10;..."></textarea>
+        <div class="controls"><button id="countWords">Посчитать слова</button><button class="secondary"
+            id="showModel">Показать образец</button><button class="secondary" id="hideModel">Скрыть
+            образец</button><button class="secondary" id="copyDraft">Копировать письмо</button></div>
+        <div id="wordCount" class="feedback" aria-live="polite"></div>
+        <div id="modelAnswer" class="mini" hidden>
+          <p>Sehr geehrter Herr Weber,</p>
+          <p>vielen Dank für Ihre Nachricht. Wir bedauern sehr, dass sich die Lieferung Ihrer zehn Bürostühle verzögert
+            hat und Sie von unserem Kundenservice keine ausreichenden Informationen erhalten haben. Dafür möchten wir
+            uns ausdrücklich bei Ihnen entschuldigen.</p>
+          <p>Die Verzögerung ist aufgrund eines technischen Fehlers bei unserem Logistikpartner entstanden. Wir haben
+            den Vorgang geprüft und können Ihnen mitteilen, dass die Lieferung voraussichtlich am Donnerstag zwischen 10
+            und 12 Uhr bei Ihnen eintreffen wird.</p>
+          <p>Als Entgegenkommen bieten wir Ihnen einen Preisnachlass von 10 % auf Ihre Bestellung an. Wir hoffen, dass
+            wir Ihnen damit entgegenkommen und die entstandenen Unannehmlichkeiten teilweise ausgleichen können.</p>
+          <p>Könnten Sie uns bitte kurz bestätigen, ob der vorgeschlagene Liefertermin für Sie passend ist?</p>
+          <p>Vielen Dank für Ihr Verständnis. Wir freuen uns auf Ihre Rückmeldung.</p>
+          <p>Mit freundlichen Grüßen<br>[Ihr Name]</p>
+        </div>
+        <h3>Контрольный список</h3>
+        <div class="checklist">
+          <label><input type="checkbox">Я ответил на все пункты инструкции.</label>
+          <label><input type="checkbox">Я извинился за задержку и недостаток информации.</label>
+          <label><input type="checkbox">Я объяснил причину задержки.</label>
+          <label><input type="checkbox">Я указал четверг, 10:00–12:00.</label>
+          <label><input type="checkbox">Я предложил скидку 10 %.</label>
+          <label><input type="checkbox">Я попросил подтвердить срок доставки.</label>
+          <label><input type="checkbox">Я проверил порядок слов после dass и ob.</label>
+          <label><input type="checkbox">Я использовал вежливое обращение и завершение.</label>
+        </div>
+      </section>
+
+      <section id="hausaufgabe">
+        <h2>7. Hausaufgabe · Домашнее задание</h2>
+        <h3>A. Redemittel lernen</h3>
+        <p>Выучите 10 фраз из раздела 3. Для каждой придумайте собственное предложение.</p>
+        <h3>B. Schreiben · Новая ситуация</h3>
+        <div class="mini">
+          <p>Ein Kunde hat einen Büromonitor bestellt. Das Gerät wurde pünktlich geliefert, funktioniert aber nicht
+            richtig. Der Kunde benötigt den Monitor dringend für seine Arbeit und bittet um eine schnelle Lösung.</p>
+          <b>Interne Anweisungen:</b>
+          <ol>
+            <li>Entschuldigen Sie sich für die Unannehmlichkeiten.</li>
+            <li>Bitten Sie den Kunden, das Gerät neu zu starten und die Kabelverbindungen zu überprüfen.</li>
+            <li>Falls das Problem weiterhin besteht, bieten Sie einen kostenlosen Austausch innerhalb von drei Werktagen
+              an.</li>
+            <li>Bitten Sie um eine kurze Rückmeldung.</li>
+          </ol>
+        </div>
+        <p>Напишите письмо за 15 минут. На следующем занятии проверьте, можете ли вы использовать изученные конструкции
+          без образца.</p>
+        <h3>C. Selbstkontrolle</h3>
+        <div class="checklist">
+          <label><input type="checkbox">Я учёл все пункты инструкции.</label>
+          <label><input type="checkbox">Я извинился за проблему.</label>
+          <label><input type="checkbox">Я предложил конкретное решение.</label>
+          <label><input type="checkbox">Я проверил порядок слов после dass, ob и weil.</label>
+          <label><input type="checkbox">Я использовал вежливое обращение и завершение.</label>
+        </div>
+      </section>
+      <footer>DTB B2 · Deutsch für den Beruf · Урок 2: Lesen und Schreiben</footer>
+    </main>
+    <script>
+      const vocab = [
+        ["die Beschwerde", "жалоба"], ["sich beschweren über", "жаловаться на"], ["die Unzufriedenheit", "неудовлетворённость"], ["der Mangel", "недостаток, дефект"], ["die Verspätung", "задержка"], ["die Lieferung", "доставка, поставка"], ["die Bestellung", "заказ"], ["die Vereinbarung", "договорённость"], ["die Frist", "срок"], ["die Unannehmlichkeit", "неудобство"], ["die Ursache", "причина"], ["die Auswirkung", "последствие"], ["der Schaden", "ущерб"], ["die Rückmeldung", "обратная связь, ответ"], ["die Maßnahme", "мера"], ["den Fehler beheben", "устранить ошибку"], ["eine Rückerstattung anbieten", "предложить возврат денег"], ["die Kosten übernehmen", "взять расходы на себя"], ["den Vorgang prüfen", "проверить ситуацию"], ["sich um etwas kümmern", "заняться чем-либо"], ["eine Frist einhalten", "соблюдать срок"], ["die Angelegenheit klären", "урегулировать вопрос"]
+      ];
+      const phrases = [
+        ["Wir bedauern, dass es zu diesem Problem gekommen ist.", "Мы сожалеем, что возникла эта проблема."],
+        ["Wir entschuldigen uns für die entstandenen Unannehmlichkeiten.", "Приносим извинения за возникшие неудобства."],
+        ["Wir können nachvollziehen, dass Sie unzufrieden sind.", "Мы понимаем, что вы недовольны."],
+        ["Wir haben Ihr Anliegen geprüft.", "Мы рассмотрели ваш вопрос."],
+        ["Die Verzögerung ist aufgrund eines technischen Problems entstanden.", "Задержка возникла из-за технической проблемы."],
+        ["Wir kümmern uns darum, dass …", "Мы позаботимся о том, чтобы …"],
+        ["Wir können Ihnen folgende Lösung anbieten: …", "Мы можем предложить вам следующее решение: …"],
+        ["Wir werden Sie bis spätestens Freitag informieren.", "Мы сообщим вам не позднее пятницы."],
+        ["Wir hoffen, dass wir die Angelegenheit damit klären können.", "Надеемся, что так мы сможем урегулировать вопрос."],
+        ["Vielen Dank für Ihr Verständnis.", "Спасибо за понимание."],
+        ["Könnten Sie uns bitte bestätigen, ob …?", "Не могли бы вы подтвердить, … ли?"],
+        ["Bei weiteren Fragen können Sie sich gerne an uns wenden.", "Если у вас возникнут вопросы, обращайтесь к нам."]
+      ];
+      const vocabGrid = document.getElementById("vocabGrid");
+      vocab.forEach(([de, ru]) => { const d = document.createElement("button"); d.type = "button"; d.className = "mini wordcard"; d.style.cssText = "text-align:left;background:#fff;color:var(--text);border:1px solid var(--line);min-height:76px"; d.innerHTML = `<span class="de">${de}</span><br><span class="ru" hidden>${ru}</span>`; d.addEventListener("click", () => { const r = d.querySelector(".ru"); r.hidden = !r.hidden }); vocabGrid.appendChild(d) });
+      document.getElementById("showAllWords").onclick = () => document.querySelectorAll("#vocabGrid .ru").forEach(x => x.hidden = false);
+      document.getElementById("hideAllWords").onclick = () => document.querySelectorAll("#vocabGrid .ru").forEach(x => x.hidden = true);
+      const phraseGrid = document.getElementById("phraseGrid");
+      phrases.forEach(([de, ru]) => { const d = document.createElement("button"); d.type = "button"; d.className = "mini phrasecard"; d.style.cssText = "text-align:left;background:#fff;color:var(--text);min-height:110px"; d.innerHTML = `<span class="de">${de}</span><br><span class="ru" hidden>${ru}</span>`; d.addEventListener("click", () => { const r = d.querySelector(".ru"); r.hidden = !r.hidden }); phraseGrid.appendChild(d) });
+      document.getElementById("showAllPhrases").onclick = () => document.querySelectorAll("#phraseGrid .ru").forEach(x => x.hidden = false);
+      document.getElementById("hideAllPhrases").onclick = () => document.querySelectorAll("#phraseGrid .ru").forEach(x => x.hidden = true);
+      const prep = [["Der Kunde beschwert sich ___ die lange Wartezeit.", "über"], ["Wir entschuldigen uns ___ die Verspätung.", "für"], ["Ich kümmere mich ___ die Angelegenheit.", "um"], ["Wir bitten Sie ___ etwas Geduld.", "um"], ["Wir informieren Sie ___ den aktuellen Stand.", "über"]];
+      const prepBox = document.getElementById("prepositionQuiz");
+      prep.forEach((q, i) => { const d = document.createElement("div"); d.className = "question"; d.innerHTML = `<b>${i + 1}. ${q[0]}</b><div>${["über", "für", "um", "auf"].map(v => `<label class="option"><input type="radio" name="prep${i}" value="${v}">${v}</label>`).join("")}</div>`; prepBox.appendChild(d) });
+      document.getElementById("checkPrep").onclick = () => { let score = 0; prep.forEach((q, i) => { const d = prepBox.children[i], a = document.querySelector(`input[name="prep${i}"]:checked`); gradeQuestion(d, !!a && a.value === q[1], `Правильный ответ: ${q[1]}`, a ? "" : "Ответ не выбран."); if (a && a.value === q[1]) score++ }); const f = document.getElementById("prepFeedback"); f.textContent = `Результат: ${score} из ${prep.length}.`; f.className = "feedback " + (score === prep.length ? "correct" : "incorrect") };
+      const phraseQs = [
+        ["Вы хотите извиниться за неудобства.", 1], ["Вы сообщаете, что проверили запрос.", 3], ["Вы хотите предложить решение.", 6], ["Вы обещаете сообщить до пятницы.", 7], ["Вы просите подтвердить информацию.", 10]
+      ];
+      const pq = document.getElementById("phraseQuiz");
+      phraseQs.forEach((q, i) => { const d = document.createElement("div"); d.className = "question"; d.innerHTML = `<b>${i + 1}. ${q[0]}</b><select id="pq${i}"><option value="">Выберите фразу…</option>${phrases.map((p, j) => `<option value="${j}">${p[0]}</option>`).join("")}</select>`; pq.appendChild(d) });
+      document.getElementById("checkPhraseQuiz").onclick = () => { let score = 0; phraseQs.forEach((q, i) => { const d = pq.children[i], sel = document.getElementById(`pq${i}`), ok = sel.value !== "" && Number(sel.value) === q[1]; gradeQuestion(d, ok, `Правильный вариант: ${phrases[q[1]][0]}`, sel.value ? "" : "Выберите ответ."); if (ok) score++ }); const f = document.getElementById("phraseFeedback"); f.textContent = `Результат: ${score} из ${phraseQs.length}.`; f.className = "feedback " + (score === phraseQs.length ? "correct" : "incorrect") };
+      const tf = [
+        ["Der Kunde hat zehn Bürostühle bestellt.", "r"], ["Die Lieferung sollte am 12. Oktober erfolgen.", "f"], ["Die neuen Mitarbeiter beginnen am Montag.", "r"], ["Der Kundenservice hat einen konkreten Liefertermin genannt.", "f"], ["Der Kunde bittet um eine schnelle Klärung.", "r"]
+      ];
+      const tfBox = document.getElementById("tfQuiz");
+      tf.forEach((q, i) => { const d = document.createElement("div"); d.className = "question"; d.innerHTML = `<b>${i + 1}. ${q[0]}</b><label class="option"><input type="radio" name="tf${i}" value="r">Richtig</label><label class="option"><input type="radio" name="tf${i}" value="f">Falsch</label>`; tfBox.appendChild(d) });
+      const rq = [
+        ["Warum ist die verspätete Lieferung besonders problematisch?", ["Der Kunde möchte die Bestellung stornieren.", "Die neuen Mitarbeiter brauchen die Arbeitsplätze.", "Die Stühle sind beschädigt angekommen."], 1],
+        ["Was erwartet Herr Weber?", ["Eine neue Auftragsbestätigung.", "Eine Rückmeldung bis morgen Mittag.", "Einen Besuch des Geschäftsführers."], 1],
+        ["Was bedeutet „entgegenkommen“ in diesem Zusammenhang?", ["Eine Kulanzlösung anbieten.", "Die Lieferung ablehnen.", "Den Kunden an einen anderen Anbieter verweisen."], 0]
+      ];
+      const rbox = document.getElementById("readingQuiz");
+      rq.forEach((q, i) => { const d = document.createElement("div"); d.className = "question"; d.innerHTML = `<b>${i + 6}. ${q[0]}</b>${q[1].map((v, j) => `<label class="option"><input type="radio" name="rq${i}" value="${j}">${String.fromCharCode(97 + j)}) ${v}</label>`).join("")}`; rbox.appendChild(d) });
+      document.getElementById("checkReading").onclick = () => { let score = 0, total = tf.length + rq.length; tf.forEach((q, i) => { const a = document.querySelector(`input[name="tf${i}"]:checked`), ok = !!a && a.value === q[1]; gradeQuestion(tfBox.children[i], ok, `Правильный ответ: ${q[1] === "r" ? "Richtig" : "Falsch"}`, a ? "" : "Ответ не выбран."); if (ok) score++ }); rq.forEach((q, i) => { const a = document.querySelector(`input[name="rq${i}"]:checked`), ok = !!a && Number(a.value) === q[2]; gradeQuestion(rbox.children[i], ok, `Правильный ответ: ${String.fromCharCode(97 + q[2])}) ${q[1][q[2]]}`, a ? "" : "Ответ не выбран."); if (ok) score++ }); const f = document.getElementById("readingFeedback"); f.textContent = `Результат: ${score} из ${total}.`; f.className = "feedback " + (score === total ? "correct" : "incorrect") };
+      document.getElementById("resetReading").onclick = () => { document.querySelectorAll('#lesen input[type="radio"]').forEach(x => x.checked = false); document.querySelectorAll("#lesen .question").forEach(clearGrade); const f = document.getElementById("readingFeedback"); f.textContent = ""; f.className = "feedback" };
+      function gradeQuestion(el, ok, answer, extra = "") { el.classList.remove("is-correct", "is-incorrect"); el.classList.add(ok ? "is-correct" : "is-incorrect"); let f = el.querySelector(".answer-feedback"); if (!f) { f = document.createElement("div"); f.className = "answer-feedback"; el.appendChild(f) } f.className = "answer-feedback " + (ok ? "correct" : "incorrect"); f.textContent = (ok ? "✓ Верно. " : "✗ Неверно. ") + answer + (extra ? " " + extra : "") }
+      function clearGrade(el) { el.classList.remove("is-correct", "is-incorrect"); const f = el.querySelector(".answer-feedback"); if (f) f.remove() }
+      document.getElementById("checkExam").onclick = () => { let score = 0;["b", "b"].forEach((v, i) => { const d = document.querySelector(`input[name="exam${i + 1}"]`).closest(".question"), a = document.querySelector(`input[name="exam${i + 1}"]:checked`), ok = !!a && a.value === v; const correctText = i === 0 ? "b) die Lieferung verspätet ist und er keine ausreichenden Informationen erhalten hat." : "b) dem Kunden einen Preisnachlass von 10 % anzubieten und einen Liefertermin mitzuteilen."; gradeQuestion(d, ok, correctText, a ? "" : "Antwort nicht gewählt."); if (ok) score++ }); const f = document.getElementById("examFeedback"); f.textContent = ` Ergebnis: ${score}/2 richtig`; f.className = "feedback " + (score === 2 ? "correct" : "incorrect") };
+      document.getElementById("countWords").onclick = () => { const s = document.getElementById("emailDraft").value.trim(); const n = s ? s.split(/\s+/).length : 0; document.getElementById("wordCount").textContent = `Количество слов: ${n}` };
+      document.getElementById("showModel").onclick = () => document.getElementById("modelAnswer").hidden = false;
+      document.getElementById("hideModel").onclick = () => document.getElementById("modelAnswer").hidden = true;
+      document.getElementById("copyDraft").onclick = async () => { const t = document.getElementById("emailDraft").value; const f = document.getElementById("wordCount"); try { await navigator.clipboard.writeText(t); f.textContent = "Письмо скопировано." } catch (e) { f.textContent = "Не удалось скопировать автоматически. Выделите текст и скопируйте его вручную." } };
+    </script>
+  </body>
+
+</html>

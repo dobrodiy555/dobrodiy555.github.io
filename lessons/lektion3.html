@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DTB B2 — Schreiben: Forumsbeitrag</title>
+    <style>
+      :root {
+        --navy: #183b56;
+        --blue: #2563eb;
+        --teal: #0f766e;
+        --bg: #f4f7fb;
+        --card: #fff;
+        --text: #1f2937;
+        --muted: #64748b;
+        --line: #dbe4ee;
+        --green: #15803d;
+        --red: #b91c1c;
+        --gold: #b45309
+      }
+
+      * {
+        box-sizing: border-box
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 14px
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif
+      }
+
+      header {
+        background: linear-gradient(125deg, #183b56, #2563eb);
+        color: #fff;
+        padding: 38px 20px
+      }
+
+      .hero,
+      .container {
+        max-width: 1050px;
+        margin: auto
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        font-size: .78rem;
+        opacity: .85
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.1;
+        margin: .5rem 0
+      }
+
+      header p {
+        max-width: 740px;
+        color: #e5efff;
+        margin-bottom: 0
+      }
+
+      main {
+        padding: 24px 16px 60px
+      }
+
+      nav {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 auto 22px;
+        max-width: 1050px
+      }
+
+      nav a {
+        color: var(--navy);
+        background: #e7eef8;
+        text-decoration: none;
+        padding: 7px 12px;
+        border-radius: 999px;
+        font-size: .9rem
+      }
+
+      nav a:hover {
+        background: #d5e5fb
+      }
+
+      section,
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: clamp(18px, 3vw, 28px);
+        margin: 18px auto;
+        max-width: 1050px;
+        box-shadow: 0 4px 16px #17324d08
+      }
+
+      h2 {
+        color: var(--navy);
+        font-size: 1.55rem;
+        margin: 0 0 14px
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        margin: 22px 0 8px;
+        color: #244b68
+      }
+
+      .lead {
+        color: var(--muted);
+        margin-top: -5px
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px
+      }
+
+      .mini {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+        background: #fbfdff
+      }
+
+      .de {
+        font-weight: 700;
+        color: #183b56
+      }
+
+      .ru {
+        color: var(--muted);
+        font-size: .94rem
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top
+      }
+
+      th {
+        background: #eef4fa;
+        color: #183b56
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 13px;
+        margin: 9px 0;
+        background: #fff
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 650;
+        color: #244b68
+      }
+
+      button,
+      .btn {
+        border: 0;
+        border-radius: 10px;
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 15px;
+        font: inherit;
+        cursor: pointer;
+        transition: filter .15s, transform .15s
+      }
+
+      button:hover,
+      .btn:hover {
+        filter: brightness(.93)
+      }
+
+      button:active {
+        transform: scale(.99)
+      }
+
+      button.secondary {
+        background: #e8eef6;
+        color: var(--navy)
+      }
+
+      button.teal {
+        background: var(--teal)
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0
+      }
+
+      .question {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 12px;
+        transition: background .2s, border-color .2s
+      }
+
+      .question:last-child {
+        border-bottom: 0
+      }
+
+      label.option {
+        display: block;
+        padding: 7px 10px;
+        border-radius: 8px;
+        cursor: pointer
+      }
+
+      label.option:hover {
+        background: #f0f6ff
+      }
+
+      input[type=radio],
+      input[type=checkbox] {
+        margin-right: 8px
+      }
+
+      input[type=text],
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        font: inherit;
+        background: #fff;
+        min-width: 0
+      }
+
+      textarea {
+        min-height: 180px;
+        resize: vertical
+      }
+
+      select {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 12px;
+        padding: 13px 42px 13px 14px;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 13px;
+        background-color: #f8fbff;
+        color: #183b56;
+        font: inherit;
+        font-size: 16px;
+        line-height: 1.4;
+        box-shadow: 0 2px 5px #183b560a;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        cursor: pointer;
+        transition: border-color .18s, box-shadow .18s
+      }
+
+      select:focus,
+      input[type=text]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px #2563eb20
+      }
+
+      .question.is-correct {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        padding: 14px;
+        margin: 10px 0
+      }
+
+      .question.is-incorrect {
+        background: #fff1f2;
+        border: 1px solid #fda4af;
+        padding: 14px;
+        margin: 10px 0
+      }
+
+      .answer-feedback {
+        margin-top: 9px;
+        padding: 9px 11px;
+        border-radius: 9px;
+        font-size: .94rem;
+        font-weight: 650
+      }
+
+      .answer-feedback.correct {
+        background: #dcfce7;
+        color: #166534
+      }
+
+      .answer-feedback.incorrect {
+        background: #ffe4e6;
+        color: #9f1239
+      }
+
+      .feedback {
+        font-weight: 650;
+        margin-top: 10px
+      }
+
+      .correct {
+        color: var(--green)
+      }
+
+      .incorrect {
+        color: var(--red)
+      }
+
+      .callout {
+        border-left: 4px solid var(--teal);
+        background: #f0fdfa;
+        padding: 13px 16px;
+        border-radius: 0 10px 10px 0
+      }
+
+      .warning {
+        border-left-color: #d97706;
+        background: #fffbeb
+      }
+
+      .pill {
+        display: inline-block;
+        background: #e0f2fe;
+        color: #075985;
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: .82rem;
+        margin: 2px
+      }
+
+      .word {
+        font-weight: 700
+      }
+
+      .phrase-card {
+        border: 1px solid #dbe4ee;
+        border-radius: 14px;
+        padding: 15px;
+        background: linear-gradient(145deg, #fff, #f7faff);
+        margin: 12px 0
+      }
+
+      .phrase-card .prompt {
+        font-weight: 700;
+        color: #183b56;
+        margin-bottom: 4px
+      }
+
+      .phrase-card select {
+        margin-top: 10px;
+        border-color: #b9cbe0;
+        background-color: #f5f9ff
+      }
+
+      .phrase-card.is-correct {
+        border: 1.5px solid #22c55e;
+        background: #f0fdf4
+      }
+
+      .phrase-card.is-incorrect {
+        border: 1.5px solid #fb7185;
+        background: #fff1f2
+      }
+
+      .phrase-card .answer-feedback {
+        font-weight: 600
+      }
+
+      .wordcount {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: .9rem;
+        margin-top: 7px
+      }
+
+      .checklist label {
+        display: flex;
+        gap: 10px;
+        margin: 9px 0;
+        align-items: flex-start
+      }
+
+      .checklist input {
+        margin-top: 6px
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 24px
+      }
+
+      @media(max-width:600px) {
+        body {
+          font-size: 15px;
+          line-height: 1.55
+        }
+
+        header {
+          padding: 28px 16px
+        }
+
+        main {
+          padding: 14px 10px 36px
+        }
+
+        section,
+        .panel {
+          padding: 17px 14px;
+          border-radius: 14px;
+          margin: 12px auto
+        }
+
+        h1 {
+          font-size: clamp(1.9rem, 9vw, 2.5rem)
+        }
+
+        h2 {
+          font-size: 1.3rem
+        }
+
+        h3 {
+          font-size: 1.03rem
+        }
+
+        nav {
+          gap: 7px;
+          margin-bottom: 14px
+        }
+
+        nav a {
+          font-size: .82rem;
+          padding: 8px 11px
+        }
+
+        .grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 10px
+        }
+
+        .mini {
+          padding: 12px
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: normal;
+          font-size: .88rem
+        }
+
+        th,
+        td {
+          padding: 8px;
+          min-width: 110px
+        }
+
+        button,
+        .btn {
+          max-width: 100%;
+          min-height: 44px;
+          padding: 10px 12px
+        }
+
+        .controls {
+          gap: 8px
+        }
+
+        .controls button {
+          flex: 1 1 auto
+        }
+
+        label.option {
+          padding: 10px 8px;
+          line-height: 1.4
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+          transform: scale(1.12);
+          margin-right: 8px
+        }
+
+        textarea {
+          min-height: 220px
+        }
+
+        select {
+          font-size: 16px;
+          padding: 13px 40px 13px 12px
+        }
+
+        .question {
+          padding: 12px 8px
+        }
+
+        .phrase-card {
+          padding: 12px
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff
+        }
+
+        header {
+          background: #fff;
+          color: #111;
+          padding: 10px 0
+        }
+
+        header p {
+          color: #333
+        }
+
+        nav,
+        .controls,
+        button,
+        footer {
+          display: none !important
+        }
+
+        section,
+        .panel {
+          box-shadow: none;
+          break-inside: avoid;
+          border: 1px solid #aaa
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="hero">
+        <div class="eyebrow">Deutsch-Test für den Beruf · B2</div>
+        <h1>Schreiben: Forumsbeitrag</h1>
+        <p>Учимся писать аргументированный пост на форуме: выражать мнение, приводить аргументы и примеры, реагировать
+          на чужие идеи и логично завершать текст. Интерактивный урок на 60 минут.</p>
+      </div>
+    </header>
+    <main>
+      <nav>
+        <a href="#plan">План</a><a href="#aufbau">Структура</a><a href="#wortschatz">Лексика</a><a
+          href="#redemittel">Redemittel</a><a href="#training">Тренировка</a><a href="#schreiben">Письмо</a><a
+          href="#hausaufgabe">Домашнее задание</a>
+      </nav>
+
+      <section id="plan">
+        <h2>1. План урока — 60 минут</h2>
+        <div class="grid">
+          <div class="mini"><span class="pill">0–5 мин</span>
+            <h3>Разминка</h3>
+            <p>Обсудить тему дистанционной работы: преимущества и недостатки.</p>
+          </div>
+          <div class="mini"><span class="pill">5–15 мин</span>
+            <h3>Структура</h3>
+            <p>Разобрать обязательные элементы Forumsbeitrag и логику абзацев.</p>
+          </div>
+          <div class="mini"><span class="pill">15–25 мин</span>
+            <h3>Лексика и Redemittel</h3>
+            <p>Выучить фразы для мнения, аргументов, примеров и заключения.</p>
+          </div>
+          <div class="mini"><span class="pill">25–35 мин</span>
+            <h3>Языковая тренировка</h3>
+            <p>Выбрать подходящие фразы и связки, получить обратную связь.</p>
+          </div>
+          <div class="mini"><span class="pill">35–45 мин</span>
+            <h3>План текста</h3>
+            <p>Составить аргументы за и против и расположить их логично.</p>
+          </div>
+          <div class="mini"><span class="pill">45–57 мин</span>
+            <h3>Письмо</h3>
+            <p>Написать Forumsbeitrag и проверить его по чек-листу.</p>
+          </div>
+          <div class="mini"><span class="pill">57–60 мин</span>
+            <h3>Итог</h3>
+            <p>Назвать 2 удачные фразы и 1 пункт для улучшения.</p>
+          </div>
+        </div>
+        <div class="callout"><strong>Цель урока:</strong> ученик умеет написать связный пост на профессиональную тему,
+          высказать своё мнение, подкрепить его аргументами и сделать вывод. Это учебная тренировка в формате
+          berufliches Deutsch, а не таймированный экзамен.</div>
+      </section>
+
+      <section id="aufbau">
+        <h2>2. Как строить Forumsbeitrag</h2>
+        <p class="lead">Не нужно писать сложные длинные предложения. Важнее ответить на все пункты задания и связать
+          мысли.</p>
+        <div class="grid">
+          <div class="mini"><span class="pill">1 · Einleitung</span>
+            <h3>Вступление</h3>
+            <p>Назови тему, которую нужно обсудить.</p>
+            <p class="de">Habt ihr schon davon gehört, dass …</p>
+          </div>
+          <div class="mini"><span class="pill">2 · Meinung</span>
+            <h3>Своё мнение</h3>
+            <p>Чётко обозначь позицию.</p>
+            <p class="de">Meiner Meinung nach …</p>
+          </div>
+          <div class="mini"><span class="pill">3 · Argumente</span>
+            <h3>Аргументы и примеры</h3>
+            <p>Приведи 1–2 причины и объясни их на примерах.</p>
+            <p class="de">Ein wichtiger Vorteil ist, dass …</p>
+          </div>
+          <div class="mini"><span class="pill">4 · Andere Seite</span>
+            <h3>Другая точка зрения</h3>
+            <p>Покажи, что понимаешь противоположные аргументы.</p>
+            <p class="de">Natürlich gibt es auch Nachteile, zum Beispiel …</p>
+          </div>
+          <div class="mini"><span class="pill">5 · Schluss</span>
+            <h3>Заключение</h3>
+            <p>Подведи итог или предложи решение.</p>
+            <p class="de">Zusammenfassend bin ich der Ansicht, dass …</p>
+          </div>
+        </div>
+        <h3>Удобная формула абзаца</h3>
+        <div class="callout"><strong>Тезис → объяснение → пример → мини-вывод.</strong><br>Ein Vorteil ist, dass man
+          Zeit spart. Das liegt daran, dass man nicht pendeln muss. Zum Beispiel kann man die gewonnene Zeit für die
+          Familie nutzen. Deshalb finde ich diese Möglichkeit praktisch.</div>
+      </section>
+
+      <section id="wortschatz">
+        <h2>3. Лексика для аргументации</h2>
+        <p class="lead">Нажми на карточку, чтобы увидеть перевод. Попробуй сначала вспомнить значение самостоятельно.
+        </p>
+        <div class="controls"><button type="button" id="showWords">Показать переводы</button><button type="button"
+            class="secondary" id="hideWords">Скрыть переводы</button></div>
+        <div class="grid" id="wordGrid">
+          <div class="mini wordcard">
+            <div class="de">die Vereinbarkeit von Beruf und Privatleben</div>
+            <div class="ru hidden">совмещение работы и личной жизни</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">Zeit sparen</div>
+            <div class="ru hidden">экономить время</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">der Arbeitsweg / pendeln</div>
+            <div class="ru hidden">дорога на работу / ездить на работу</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">die Produktivität</div>
+            <div class="ru hidden">производительность</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">sich konzentrieren auf + Akk.</div>
+            <div class="ru hidden">сосредоточиться на чём-либо</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">der Austausch mit Kollegen</div>
+            <div class="ru hidden">общение / обмен мнениями с коллегами</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">die Zusammenarbeit</div>
+            <div class="ru hidden">сотрудничество, совместная работа</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">die Flexibilität</div>
+            <div class="ru hidden">гибкость</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">die Ablenkung</div>
+            <div class="ru hidden">отвлекающий фактор</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">eine klare Grenze ziehen</div>
+            <div class="ru hidden">провести чёткую границу</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">auf etwas angewiesen sein</div>
+            <div class="ru hidden">зависеть от чего-либо / нуждаться в чём-либо</div>
+          </div>
+          <div class="mini wordcard">
+            <div class="de">eine Lösung finden</div>
+            <div class="ru hidden">найти решение</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="redemittel">
+        <h2>4. Полезные Redemittel</h2>
+        <div class="grid">
+          <div class="mini">
+            <h3>Ввести тему</h3>
+            <p class="de">Habt ihr schon davon gehört, dass …</p>
+            <p class="de">Heutzutage wird häufig darüber diskutiert, ob …</p>
+            <p class="de">Das Thema … spielt im Berufsleben eine wichtige Rolle.</p>
+            <p class="de">Ich möchte zu diesem Thema meine Meinung äußern.</p>
+          </div>
+          <div class="mini">
+            <h3>Выразить мнение</h3>
+            <p class="de">Meiner Meinung nach …</p>
+            <p class="de">Ich bin der Ansicht, dass …</p>
+            <p class="de">Ich persönlich finde, dass …</p>
+          </div>
+          <div class="mini">
+            <h3>Добавить аргумент</h3>
+            <p class="de">Ein wichtiger Vorteil/Nachteil ist, dass …</p>
+            <p class="de">Dafür spricht aus meiner Perspektive auf jeden Fall, dass …</p>
+            <p class="de">Dagegen spricht allerdings, dass …</p>
+            <p class="de">Wenn wir ..., profitiert die Firma auch davon.</p>
+          </div>
+          <div class="mini">
+            <h3>Объяснить и привести пример</h3>
+            <p class="de">Das liegt daran, dass …</p>
+            <p class="de">Ein gutes Beispiel dafür ist …</p>
+            <p class="de">Zum Beispiel kann man …</p>
+          </div>
+          <div class="mini">
+            <h3>Сбалансировать мнение</h3>
+            <p class="de">Einerseits …, andererseits …</p>
+            <p class="de">Natürlich darf man nicht vergessen, dass …</p>
+            <p class="de">Obwohl …, sollte man auch berücksichtigen, dass …</p>
+          </div>
+          <div class="mini">
+            <h3>Завершить</h3>
+            <p class="de">Zusammenfassend lässt sich sagen, dass …</p>
+            <p class="de">Aus diesen Gründen bin ich dafür/dagegen, dass …</p>
+            <p class="de">Eine gute Lösung wäre meiner Meinung nach …</p>
+          </div>
+        </div>
+        <div class="callout warning"><strong>Внимание к грамматике:</strong> после <em>dass, weil, obwohl</em>
+          спрягаемый глагол обычно стоит в конце: <span class="de">…, weil man zu Hause konzentrierter arbeiten
+            kann.</span></div>
+      </section>
+
+      <section id="training">
+        <h2>5. Тренировка Redemittel и связок</h2>
+        <p class="lead">Выбери лучший вариант в каждом поле и нажми «Проверить». Каждый ответ будет отмечен отдельно.
+        </p>
+        <div id="phraseQuiz">
+          <div class="phrase-card" data-answer="2">
+            <div class="prompt">1. Как начать обсуждение актуальной темы?</div>
+            <div class="ru">«В настоящее время часто обсуждают, следует ли…»</div><select aria-label="Ответ 1">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Ich bin dagegen, dass …</option>
+              <option value="2">Heutzutage wird häufig darüber diskutiert, ob …</option>
+              <option value="3">Zum Schluss möchte ich sagen …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="phrase-card" data-answer="1">
+            <div class="prompt">2. Как ввести аргумент в пользу идеи?</div>
+            <div class="ru">«В пользу этого говорит то, что…»</div><select aria-label="Ответ 2">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Dafür spricht, dass …</option>
+              <option value="2">Das ist mir egal.</option>
+              <option value="3">Ich habe keine Ahnung, ob …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="phrase-card" data-answer="3">
+            <div class="prompt">3. Как показать две стороны вопроса?</div>
+            <div class="ru">«С одной стороны…, с другой стороны…»</div><select aria-label="Ответ 3">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Meiner Meinung nach ist …</option>
+              <option value="2">Aus diesem Grund …</option>
+              <option value="3">Einerseits …, andererseits …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="phrase-card" data-answer="2">
+            <div class="prompt">4. Как привести пример?</div>
+            <div class="ru">«Хорошим примером этого является…»</div><select aria-label="Ответ 4">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Das liegt daran, dass …</option>
+              <option value="2">Ein gutes Beispiel dafür ist …</option>
+              <option value="3">Zusammenfassend lässt sich sagen …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="phrase-card" data-answer="1">
+            <div class="prompt">5. Как начать заключение?</div>
+            <div class="ru">«Подводя итог, можно сказать, что…»</div><select aria-label="Ответ 5">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Zusammenfassend lässt sich sagen, dass …</option>
+              <option value="2">Dafür spricht, dass …</option>
+              <option value="3">Ein Beispiel dafür ist …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="phrase-card" data-answer="3">
+            <div class="prompt">6. Как объяснить причину?</div>
+            <div class="ru">«Это связано с тем, что…»</div><select aria-label="Ответ 6">
+              <option value="">— Выбери фразу —</option>
+              <option value="1">Zum Schluss …</option>
+              <option value="2">Einerseits …</option>
+              <option value="3">Das liegt daran, dass …</option>
+            </select>
+            <div class="result"></div>
+          </div>
+        </div>
+        <div class="controls"><button type="button" id="checkPhrases">Проверить ответы</button><button type="button"
+            class="secondary" id="resetPhrases">Сбросить</button></div>
+        <div id="phraseScore" class="feedback" aria-live="polite"></div>
+
+        <h3>Связки в контексте</h3>
+        <div id="connectorQuiz">
+          <div class="question" data-answer="weil"><strong>7.</strong> Homeoffice ist praktisch, ___ man Zeit für den
+            Arbeitsweg spart.
+            <select>
+              <option value="">Выбери связку</option>
+              <option value="obwohl">obwohl</option>
+              <option value="weil">weil</option>
+              <option value="trotzdem">trotzdem</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-answer="obwohl"><strong>8.</strong> ___ man zu Hause arbeitet, kann die
+            Kommunikation im Team schwierig sein.
+            <select>
+              <option value="">Выбери связку</option>
+              <option value="weil">weil</option>
+              <option value="obwohl">Obwohl</option>
+              <option value="deshalb">deshalb</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-answer="deshalb"><strong>9.</strong> Viele Menschen sparen Zeit. ___ können sie
+            Beruf und Familie besser vereinbaren.
+            <select>
+              <option value="">Выбери связку</option>
+              <option value="obwohl">obwohl</option>
+              <option value="weil">weil</option>
+              <option value="deshalb">Deshalb</option>
+            </select>
+            <div class="result"></div>
+          </div>
+        </div>
+        <div class="controls"><button type="button" id="checkConnectors">Проверить связки</button><button type="button"
+            class="secondary" id="resetConnectors">Сбросить</button></div>
+        <div id="connectorScore" class="feedback" aria-live="polite"></div>
+      </section>
+
+      <section id="planung">
+        <h2>6. Планируем содержание</h2>
+        <p>Тема форума: <strong>Sollten Beschäftigte öfter im Homeoffice arbeiten?</strong> — Должны ли сотрудники чаще
+          работать из дома?</p>
+        <div class="callout"><strong>Задание:</strong> напиши пост для рабочего онлайн-форума. Вырази своё мнение,
+          назови преимущества и недостатки работы из дома, приведи пример и предложи, как компания может организовать
+          работу.</div>
+        <div class="grid">
+          <div class="mini">
+            <h3>Возможные преимущества</h3>
+            <ul>
+              <li>keine Zeit für den Arbeitsweg verlieren</li>
+              <li>flexible Arbeitszeiten</li>
+              <li>ruhiger arbeiten / sich besser konzentrieren</li>
+              <li>Beruf und Familie besser vereinbaren</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h3>Возможные недостатки</h3>
+            <ul>
+              <li>weniger persönlicher Kontakt</li>
+              <li>technische Probleme</li>
+              <li>Ablenkung zu Hause</li>
+              <li>Arbeit und Freizeit schwer trennen</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h3>Возможное решение</h3>
+            <ul>
+              <li>hybrides Modell</li>
+              <li>feste Teamtage im Büro</li>
+              <li>klare Erreichbarkeitszeiten</li>
+              <li>regelmäßige Online-Besprechungen</li>
+            </ul>
+          </div>
+        </div>
+        <h3>Составь мини-план</h3>
+        <label for="planIntro">Вступление и мнение (1–2 предложения)</label><textarea id="planIntro"
+          placeholder="Heutzutage wird oft darüber diskutiert, ob ..."></textarea>
+        <label for="planPro">Аргумент + пример</label><textarea id="planPro"
+          placeholder="Ein wichtiger Vorteil ist, dass ... Zum Beispiel ..."></textarea>
+        <label for="planContra">Недостаток / другая точка зрения</label><textarea id="planContra"
+          placeholder="Natürlich gibt es auch Nachteile ..."></textarea>
+        <label for="planConclusion">Вывод или решение</label><textarea id="planConclusion"
+          placeholder="Zusammenfassend ... Eine gute Lösung wäre ..."></textarea>
+      </section>
+
+      <section id="schreiben">
+        <h2>7. Пишем Forumsbeitrag</h2>
+        <div class="callout"><strong>Aufgabe:</strong> Sie schreiben einen Beitrag in einem Online-Forum zum Thema
+          „Homeoffice im Berufsleben“.<br><br>• Äußern Sie Ihre Meinung zum Thema.<br>• Nennen Sie Vorteile und
+          Nachteile.<br>• Geben Sie ein Beispiel aus dem Berufsalltag oder Alltag.<br>• Schlagen Sie eine mögliche
+          Lösung vor.<br><br>Schreiben Sie einen zusammenhängenden Text.</div>
+        <p class="lead">Постарайся использовать 4–6 Redemittel и абзацы. Не копируй все готовые фразы подряд — выбери
+          подходящие.</p>
+        <label for="writing">Твой текст на немецком</label>
+        <textarea id="writing"
+          placeholder="Heutzutage wird häufig darüber diskutiert, ob Beschäftigte öfter im Homeoffice arbeiten sollten. Meiner Meinung nach ..."></textarea>
+        <div class="wordcount"><span>Количество слов: <strong id="wordCount">0</strong></span><span>Учебный ориентир:
+            120–180 слов</span></div>
+        <div class="controls"><button type="button" id="copyText">Копировать текст</button><button type="button"
+            class="secondary" id="showSample">Показать пример</button></div>
+        <div id="copyFeedback" class="feedback" aria-live="polite"></div>
+        <div id="sample" hidden>
+          <h3>Пример Forumsbeitrag</h3>
+          <div class="mini" id="sampleText">
+            <p>Heutzutage wird häufig darüber diskutiert, ob Beschäftigte öfter im Homeoffice arbeiten sollten. Meiner
+              Meinung nach ist diese Möglichkeit sehr praktisch, aber sie eignet sich nicht für alle Berufe.</p>
+            <p>Ein wichtiger Vorteil ist, dass man Zeit spart, weil man nicht zur Arbeit pendeln muss. Diese Zeit kann
+              man zum Beispiel für die Familie oder für Weiterbildung nutzen. Außerdem können viele Menschen zu Hause
+              ruhiger arbeiten und sich besser konzentrieren.</p>
+            <p>Natürlich gibt es auch Nachteile. Einerseits fehlt manchmal der persönliche Kontakt zu den Kolleginnen
+              und Kollegen. Andererseits kann es schwierig sein, Arbeit und Freizeit zu trennen. Wenn man den ganzen Tag
+              zu Hause bleibt, arbeitet man manchmal länger als geplant.</p>
+            <p>Zusammenfassend bin ich der Ansicht, dass ein hybrides Modell eine gute Lösung wäre. Beschäftigte könnten
+              einige Tage im Büro arbeiten und an den anderen Tagen von zu Hause. So hätte man sowohl Flexibilität als
+              auch persönlichen Austausch im Team.</p>
+          </div>
+          <p class="ru">Обрати внимание: тема → мнение → аргументы и пример → недостатки → решение и вывод.</p>
+        </div>
+        <h3>Чек-лист самопроверки</h3>
+        <div class="checklist">
+          <label><input type="checkbox"> Я ответил на все четыре пункта задания.</label>
+          <label><input type="checkbox"> Во вступлении понятна тема и моя позиция.</label>
+          <label><input type="checkbox"> Я привёл аргументы и объяснил хотя бы один из них примером.</label>
+          <label><input type="checkbox"> Я использовал связки: weil, obwohl, deshalb, außerdem и т. п.</label>
+          <label><input type="checkbox"> После dass / weil / obwohl глагол стоит в конце придаточного
+            предложения.</label>
+          <label><input type="checkbox"> Текст разделён на логичные абзацы, заключение завершает мысль.</label>
+          <label><input type="checkbox"> Я проверил артикли, окончания, порядок слов и написание существительных с
+            заглавной буквы.</label>
+        </div>
+      </section>
+
+      <section id="hausaufgabe">
+        <h2>8. Домашнее задание</h2>
+        <p><strong>Тема:</strong> „Sollten Unternehmen ihren Mitarbeitenden flexible Arbeitszeiten anbieten?“</p>
+        <p>Напиши Forumsbeitrag на 120–180 слов и выполни четыре пункта:</p>
+        <ol>
+          <li>Вырази своё мнение.</li>
+          <li>Назови два преимущества гибкого графика.</li>
+          <li>Укажи один возможный недостаток.</li>
+          <li>Предложи решение, которое подходит и сотрудникам, и работодателю.</li>
+        </ol>
+        <div class="callout"><strong>Усложнение:</strong> используй минимум пять Redemittel из урока, одно предложение с
+          <em>obwohl</em> и одно с <em>deshalb</em>.
+        </div>
+      </section>
+      <footer>DTB B2 · Schreiben: Forumsbeitrag · Учебная HTML-страница для занятий</footer>
+    </main>
+    <script>
+      document.querySelectorAll('.wordcard').forEach(card => card.addEventListener('click', () => { const ru = card.querySelector('.ru'); ru.classList.toggle('hidden'); }));
+      document.getElementById('showWords').addEventListener('click', () => document.querySelectorAll('.wordcard .ru').forEach(x => x.classList.remove('hidden')));
+      document.getElementById('hideWords').addEventListener('click', () => document.querySelectorAll('.wordcard .ru').forEach(x => x.classList.add('hidden')));
+      document.querySelectorAll('.wordcard .ru').forEach(x => x.classList.add('hidden'));
+      function gradeCards(containerId, scoreId, kind) {
+        const cards = [...document.querySelectorAll('#' + containerId + ' .phrase-card, #' + containerId + ' .question')];
+        let score = 0, answered = 0;
+        cards.forEach((card, i) => {
+          card.classList.remove('is-correct', 'is-incorrect');
+          const select = card.querySelector('select'); const result = card.querySelector('.result');
+          result.className = 'result answer-feedback';
+          if (!select.value) { result.textContent = 'Выбери ответ, чтобы проверить это задание.'; result.classList.add('incorrect'); card.classList.add('is-incorrect'); return; }
+          answered++; const expected = card.dataset.answer;
+          const isCorrect = select.value.toLowerCase() === expected.toLowerCase();
+          if (isCorrect) { score++; card.classList.add('is-correct'); result.classList.add('correct'); result.textContent = '✓ Верно!'; }
+          else {
+            card.classList.add('is-incorrect'); result.classList.add('incorrect');
+            const opt = Array.from(select.options).find(o => o.value.toLowerCase() === expected.toLowerCase());
+            result.textContent = '✗ Неверно. Правильный ответ: ' + (opt ? opt.textContent : expected);
+          }
+        });
+        document.getElementById(scoreId).textContent = 'Результат: ' + score + ' из ' + cards.length + '. Ответов выбрано: ' + answered + ' из ' + cards.length + '.';
+      }
+      function resetQuiz(containerId, scoreId) {
+        document.querySelectorAll('#' + containerId + ' .phrase-card, #' + containerId + ' .question').forEach(card => { card.classList.remove('is-correct', 'is-incorrect'); card.querySelector('select').value = ''; const r = card.querySelector('.result'); r.className = 'result'; r.textContent = ''; });
+        document.getElementById(scoreId).textContent = '';
+      }
+      document.getElementById('checkPhrases').addEventListener('click', () => gradeCards('phraseQuiz', 'phraseScore'));
+      document.getElementById('resetPhrases').addEventListener('click', () => resetQuiz('phraseQuiz', 'phraseScore'));
+      document.getElementById('checkConnectors').addEventListener('click', () => gradeCards('connectorQuiz', 'connectorScore'));
+      document.getElementById('resetConnectors').addEventListener('click', () => resetQuiz('connectorQuiz', 'connectorScore'));
+      const writing = document.getElementById('writing');
+      function countWords(s) { const t = s.trim(); return t ? t.split(/\s+/).length : 0; }
+      writing.addEventListener('input', () => document.getElementById('wordCount').textContent = countWords(writing.value));
+      document.getElementById('showSample').addEventListener('click', function () { const sample = document.getElementById('sample'); sample.hidden = !sample.hidden; this.textContent = sample.hidden ? 'Показать пример' : 'Скрыть пример'; if (!sample.hidden) sample.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); });
+      document.getElementById('copyText').addEventListener('click', async () => { const feedback = document.getElementById('copyFeedback'); if (!writing.value.trim()) { feedback.textContent = 'Сначала напиши текст.'; return; } try { await navigator.clipboard.writeText(writing.value); feedback.textContent = 'Текст скопирован.'; } catch (e) { writing.select(); feedback.textContent = 'Выделил текст — нажми Ctrl+C, чтобы скопировать.'; } });
+    </script>
+  </body>
+
+</html>
