@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DTB B2 — Sprechen Teil 3</title>
+    <style>
+      :root {
+        --n: #183b56;
+        --b: #2563eb;
+        --t: #0f766e;
+        --bg: #f4f7fb;
+        --line: #dbe4ee
+      }
+
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #1f2937;
+        font: 16px/1.6 system-ui
+      }
+
+      header {
+        background: linear-gradient(125deg, #183b56, #2563eb);
+        color: white;
+        padding: 34px 20px
+      }
+
+      header>div,
+      nav,
+      main {
+        max-width: 1000px;
+        margin: auto
+      }
+
+      h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin: 8px 0;
+        line-height: 1.1
+      }
+
+      header p {
+        color: #e5efff
+      }
+
+      main {
+        padding: 20px 14px 50px
+      }
+
+      nav {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin-bottom: 18px
+      }
+
+      nav a {
+        background: #e7eef8;
+        color: var(--n);
+        padding: 7px 11px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: .9rem
+      }
+
+      section {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: clamp(16px, 3vw, 26px);
+        margin: 14px 0;
+        box-shadow: 0 4px 16px #17324d08
+      }
+
+      h2 {
+        color: var(--n);
+        margin: 0 0 12px;
+        font-size: 1.45rem
+      }
+
+      h3 {
+        color: #244b68;
+        margin: 18px 0 7px;
+        font-size: 1.08rem
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px
+      }
+
+      .mini {
+        border: 1px solid var(--line);
+        background: #fbfdff;
+        border-radius: 12px;
+        padding: 13px
+      }
+
+      .pill {
+        background: #e0f2fe;
+        color: #075985;
+        border-radius: 20px;
+        padding: 3px 9px;
+        font-size: .82rem
+      }
+
+      .de {
+        font-weight: 700;
+        color: var(--n)
+      }
+
+      .ru {
+        color: #64748b;
+        font-size: .94rem
+      }
+
+      .call {
+        background: #f0fdfa;
+        border-left: 4px solid var(--t);
+        padding: 13px 15px;
+        border-radius: 0 10px 10px 0;
+        margin: 12px 0
+      }
+
+      .warn {
+        background: #fffbeb;
+        border-color: #d97706
+      }
+
+      button {
+        background: var(--b);
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font: inherit;
+        cursor: pointer;
+        min-height: 42px
+      }
+
+      button.secondary {
+        background: #e8eef6;
+        color: var(--n)
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 12px 0
+      }
+
+      select,
+      textarea,
+      input {
+        width: 100%;
+        max-width: 100%;
+        font: inherit;
+        font-size: 16px;
+        padding: 11px 13px;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 11px;
+        background: #f8fbff;
+        color: var(--n)
+      }
+
+      textarea {
+        min-height: 110px
+      }
+
+      select:focus,
+      textarea:focus,
+      input:focus {
+        outline: 0;
+        border-color: var(--b);
+        box-shadow: 0 0 0 3px #2563eb20
+      }
+
+      .question {
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 10px
+      }
+
+      .question select {
+        margin-top: 8px
+      }
+
+      .question.ok {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+        padding: 12px;
+        margin: 8px 0
+      }
+
+      .question.no {
+        background: #fff1f2;
+        border: 1px solid #fda4af;
+        padding: 12px;
+        margin: 8px 0
+      }
+
+      .result {
+        margin-top: 7px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-weight: 650
+      }
+
+      .good {
+        background: #dcfce7;
+        color: #166534
+      }
+
+      .bad {
+        background: #ffe4e6;
+        color: #9f1239
+      }
+
+      .check label {
+        display: flex;
+        gap: 9px;
+        margin: 8px 0
+      }
+
+      .timer {
+        font-size: 2rem;
+        font-weight: 750;
+        color: var(--n);
+        font-variant-numeric: tabular-nums
+      }
+
+      #phrases p {
+        font-weight: 400;
+      }
+
+      @media(max-width:600px) {
+        body {
+          font-size: 15px
+        }
+
+        header {
+          padding: 26px 16px
+        }
+
+        main {
+          padding: 12px 9px 35px
+        }
+
+        section {
+          padding: 16px 13px;
+          margin: 11px 0
+        }
+
+        nav a {
+          font-size: .82rem
+        }
+
+        .grid {
+          grid-template-columns: 1fr
+        }
+
+        .controls button {
+          flex: 1
+        }
+
+        textarea {
+          min-height: 130px
+        }
+      }
+
+      @media print {
+
+        nav,
+        button,
+        .controls {
+          display: none
+        }
+
+        body {
+          background: white
+        }
+
+        section {
+          box-shadow: none;
+          break-inside: avoid
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div><small>DEUTSCH-TEST FÜR DEN BERUF · B2</small>
+        <h1>Sprechen Teil 3</h1>
+        <p>Говорим о рабочих ситуациях, выражаем мнение, обсуждаем варианты и вместе находим решение. Интерактивный урок
+          на 60 минут.</p>
+      </div>
+    </header>
+    <main>
+      <nav><a href="#format">Стратегия</a><a href="#phrases">Redemittel</a><a href="#quiz">Тренировка</a><a
+          href="#dialog">Диалог</a><a href="#monolog">Монолог</a></nav>
+
+      <section id="format">
+        <h2>1. Стратегия Sprechen Teil 3</h2>
+        <p>В этой части важно показать, что вы можете общаться в профессиональном контексте. Используйте
+          сценарии ниже как тренировочные; точные формулировки и порядок заданий сверяйте с актуальным Modelltest.</p>
+        <div class="grid">
+          <div class="mini">
+            <h3>Диалог и взаимодействие</h3>Обменяться мнениями, задать вопросы, согласовать действия.
+          </div>
+          <div class="mini">
+            <h3>Аргументация</h3>Не ограничиваться «я согласен». Объяснить почему и привести пример.
+          </div>
+          <div class="mini">
+            <h3>Реакция на партнёра</h3><span class="de">Da stimme ich Ihnen teilweise zu, allerdings …</span>
+          </div>
+        </div>
+        <div class="call"><b>Формула ответа:</b> позиция → причина → пример → связь с ситуацией.<br><span class="de">Ich
+            halte das für sinnvoll, weil … Ein Beispiel dafür ist … Deshalb würde ich vorschlagen, dass …</span></div>
+        <div class="call warn"><b>Важно:</b> не превращайте диалог в два отдельных монолога. После своей реплики задайте
+          вопрос: <i>Wie sehen Sie das?</i> Реагируйте на ответ партнёра.</div>
+      </section>
+      <section id="phrases">
+        <h2>2. Redemittel для устной части</h2>
+        <div class="grid">
+          <div class="mini">
+            <h3>Начать разговор</h3>
+            <p class="de">Wollen wir zuerst über … sprechen?</p>
+            <p class="de">Ich würde gern mit … anfangen.</p>
+            <p class="de">Wie sehen Sie die Situation?</p>
+          </div>
+          <div class="mini">
+            <h3>Выразить мнение</h3>
+            <p class="de">Meiner Ansicht nach …</p>
+            <p class="de">Ich bin davon überzeugt, dass …</p>
+            <p class="de">Aus meiner Sicht wäre es sinnvoll, …</p>
+          </div>
+          <div class="mini">
+            <h3>Согласиться</h3>
+            <p class="de">Da stimme ich Ihnen völlig zu.</p>
+            <p class="de">Das sehe ich genauso.</p>
+            <p class="de">Das ist ein überzeugendes Argument.</p>
+          </div>
+          <div class="mini">
+            <h3>Вежливо возразить</h3>
+            <p class="de">Ich verstehe Ihren Punkt, allerdings …</p>
+            <p class="de">Da bin ich nicht ganz Ihrer Meinung.</p>
+            <p class="de">Man sollte aber auch berücksichtigen, dass …</p>
+          </div>
+          <div class="mini">
+            <h3>Уточнить</h3>
+            <p class="de">Könnten Sie das bitte genauer erklären?</p>
+            <p class="de">Was meinen Sie genau damit?</p>
+            <p class="de">Habe ich Sie richtig verstanden, dass …?</p>
+          </div>
+          <div class="mini">
+            <h3>Предложить решение</h3>
+            <p class="de">Wie wäre es, wenn wir …?</p>
+            <p class="de">Ich schlage vor, dass …</p>
+            <p class="de">Wir könnten uns darauf einigen, …</p>
+          </div>
+          <div class="mini">
+            <h3>Подвести итог</h3>
+            <p class="de">Dann halten wir also fest, dass …</p>
+            <p class="de">Zusammenfassend sind wir uns einig, dass …</p>
+            <p class="de">Als nächsten Schritt könnten wir …</p>
+          </div>
+          <div class="mini">
+            <h3>Выиграть время</h3>
+            <p class="de">Das ist eine interessante Frage.</p>
+            <p class="de">Lassen Sie mich kurz überlegen.</p>
+            <p class="de">Spontan würde ich sagen, dass …</p>
+          </div>
+        </div>
+      </section>
+      <section id="quiz">
+        <h2>3. Тренировка: выбери подходящую реплику</h2>
+        <p>Выбери наиболее естественный и вежливый ответ. После проверки каждый ответ будет отмечен отдельно.</p>
+        <div id="q1">
+          <div class="question" data-a="2"><b>1. Партнёр предлагает перенести встречу. Ты согласен.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Das ist Unsinn.</option>
+              <option value="2">Ja, das halte ich für eine gute Lösung.</option>
+              <option value="3">Ich möchte nicht darüber sprechen.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="1"><b>2. Ты не совсем согласен.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Ich verstehe Ihren Punkt, allerdings sehe ich das etwas anders.</option>
+              <option value="2">Sie haben überhaupt keine Ahnung.</option>
+              <option value="3">Das ist mir egal.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="3"><b>3. Хочешь узнать мнение партнёра.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Ich bin fertig.</option>
+              <option value="2">Das ist mein letzter Vorschlag.</option>
+              <option value="3">Wie sehen Sie das?</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="2"><b>4. Вы хотите прийти к общему решению.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Wir müssen nicht weiterreden.</option>
+              <option value="2">Vielleicht können wir uns auf einen Kompromiss einigen.</option>
+              <option value="3">Ich entscheide das allein.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="1"><b>5. Ты не расслышал мысль партнёра.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Könnten Sie das bitte noch einmal erklären?</option>
+              <option value="2">Sprechen Sie nicht so viel.</option>
+              <option value="3">Das ist falsch.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="2"><b>6. Коллега говорит, что не хватает времени обучать новичков. Твой
+              ответ?</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Schönen Feierabend!</option>
+              <option value="2">Das stimmt. Vielleicht könnten wir feste Schulungstermine einplanen.</option>
+              <option value="3">Ich habe gestern eingekauft.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+          <div class="question" data-a="1"><b>7. Нужно уточнить детали предложения.</b><select>
+              <option value="">Выбери реплику</option>
+              <option value="1">Wie lange sollte eine solche Schulung dauern?</option>
+              <option value="2">Das Wetter ist heute schön.</option>
+              <option value="3">Ich stimme grundsätzlich allem zu.</option>
+            </select>
+            <div class="result"></div>
+          </div>
+        </div>
+        <div class="controls"><button onclick="grade('q1','s1')">Проверить ответы</button><button class="secondary"
+            onclick="reset('q1','s1')">Сбросить</button></div>
+        <div id="s1" class="feedback"></div>
+      </section>
+      <section id="dialog">
+        <h2>4. Übung — gemeinsam ein berufliches Problem lösen</h2>
+        <div class="call"><b>Situation: Neue Mitarbeitende einarbeiten</b><br>In einem Unternehmen haben drei neue
+          Mitarbeitende angefangen. Sie stellen häufig dieselben Fragen, sodass die erfahrenen Kolleginnen und Kollegen
+          ihre eigenen Aufgaben nicht rechtzeitig erledigen können. Besprechen Sie das Problem und einigen Sie sich auf
+          eine Lösung.</div>
+        <h3>Besprechen Sie folgende Punkte</h3>
+        <ul>
+          <li>Welche Schwierigkeiten gibt es derzeit?</li>
+          <li>Wer sollte für die Einarbeitung verantwortlich sein?</li>
+          <li>Welche Materialien oder Werkzeuge könnten den neuen Mitarbeitenden helfen?</li>
+          <li>Wann und wie sollte die Einarbeitung stattfinden?</li>
+          <li>Wie lässt sich überprüfen, ob die Lösung funktioniert?</li>
+        </ul>
+        <div class="grid">
+          <div class="mini">
+            <h3>Rolle A — Teamleitung</h3>Sie sind für die Ergebnisse des Teams verantwortlich. Schlagen Sie feste
+            Schulungszeiten und eine kurze Anleitung vor.
+          </div>
+          <div class="mini">
+            <h3>Rolle B — erfahrene/r Mitarbeiter/in</h3>Sie helfen den neuen Mitarbeitenden häufig und kommen deshalb
+            mit Ihren eigenen Aufgaben nicht rechtzeitig voran. Schlagen Sie vor, eine Mentorin oder einen Mentor zu
+            bestimmen und die Zahl spontaner Fragen zu verringern.
+          </div>
+        </div><label>Ihre Argumente und Vorschläge</label><textarea
+          placeholder="Ich finde, dass ... Ein möglicher Vorschlag wäre ..."></textarea><label>Welche Frage stellen Sie
+          Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner?</label><input placeholder="Wie könnten wir ...?">
+        <div class="call warn"><b>Für die Lehrkraft:</b> Übernehmen Sie die zweite Rolle. Stimmen Sie nicht sofort
+          allem zu: Stellen Sie eine Rückfrage, schlagen Sie eine Alternative vor und helfen Sie der lernenden Person,
+          einen Kompromiss zu finden.</div>
+      </section>
+      <section id="monolog">
+        <h2>5. Übung — die eigene Meinung äußern und Fragen beantworten</h2>
+        <div class="call"><b>Thema: Weiterbildung während der Arbeitszeit</b><br>Einige Unternehmen ermöglichen ihren
+          Mitarbeitenden, während der Arbeitszeit an Kursen teilzunehmen. Andere sind der Meinung, dass Weiterbildung
+          nach der Arbeit stattfinden sollte.</div>
+        <h3>Aufbau Ihrer Antwort</h3>
+        <ol>
+          <li>Stellen Sie das Thema vor.</li>
+          <li>Äußern Sie Ihre Meinung.</li>
+          <li>Nennen Sie Vor- und Nachteile.</li>
+          <li>Führen Sie ein Beispiel aus Ihrer Erfahrung oder aus Ihren Beobachtungen an.</li>
+          <li>Ziehen Sie ein Fazit oder schlagen Sie einen Kompromiss vor.</li>
+        </ol>
+        <div class="mini">
+          <h3>Fragen Ihrer Gesprächspartnerin oder Ihres Gesprächspartners</h3>
+          <ol>
+            <li>Warum ist Weiterbildung für Beschäftigte wichtig?</li>
+            <li>Sollte der Arbeitgeber alle Kosten übernehmen?</li>
+            <li>Wie kann man Weiterbildung und tägliche Arbeit vereinbaren?</li>
+            <li>Welche Weiterbildung würden Sie selbst gern machen?</li>
+          </ol>
+        </div><label>Stichwörter (schreiben Sie keinen vollständigen Text)</label><textarea
+          placeholder="Meinung: ...&#10;Vorteil: ...&#10;Nachteil: ...&#10;Beispiel: ...&#10;Fazit: ..."></textarea>
+        <p>Legen Sie Ihre Notizen beiseite und sprechen Sie 1–2 Minuten. Bitten Sie anschließend Ihre
+          Gesprächspartnerin oder Ihren Gesprächspartner, zwei Fragen zu stellen.</p>
+        <div class="controls"><button id="start">2 Minuten starten</button><button class="secondary"
+            id="pause">Pause</button><button class="secondary" id="resetTimer">Zurücksetzen</button></div>
+        <div class="timer" id="timer">02:00</div><small>Der Timer dient der Übung und entspricht nicht dem
+          Prüfungsmodus.</small>
+      </section>
+      <section id="home">
+        <h2>6. Hausaufgabe</h2>
+        <p><b>Situation:</b> Ein Unternehmen plant, jeden Morgen verpflichtende Teambesprechungen abzuhalten. Einige
+          Mitarbeitende halten das für sinnvoll, andere für eine Zeitverschwendung.</p>
+        <ol>
+          <li>Bereiten Sie Argumente dafür und dagegen vor.</li>
+          <li>Notieren Sie 8–10 Stichwörter, aber keinen vollständigen Text.</li>
+          <li>Nehmen Sie eine zweiminütige Audioaufnahme auf, in der Sie Ihre Meinung äußern.</li>
+          <li>Beantworten Sie folgende Fragen: <i>Welche Alternative wäre sinnvoll? Wie könnte man die Besprechungen
+              effizienter gestalten?</i>
+          </li>
+        </ol>
+        <div class="call"><b>Vorgabe:</b> Verwenden Sie mindestens fünf Redemittel, stellen Sie Ihrer
+          Gesprächspartnerin oder Ihrem Gesprächspartner zwei Fragen und schlagen Sie einen Kompromiss vor.</div>
+      </section>
+      <footer>DTB B2 · Sprechen · Учебная HTML-страница</footer>
+    </main>
+    <script>
+      function grade(id, sid) { let qs = [...document.querySelectorAll('#' + id + ' .question')], n = 0; qs.forEach(q => { q.classList.remove('ok', 'no'); let s = q.querySelector('select'), r = q.querySelector('.result'); r.className = 'result'; if (!s.value) { q.classList.add('no'); r.classList.add('bad'); r.textContent = 'Выбери ответ.'; return } if (s.value === q.dataset.a) { n++; q.classList.add('ok'); r.classList.add('good'); r.textContent = '✓ Верно!' } else { q.classList.add('no'); r.classList.add('bad'); r.textContent = '✗ Неверно. Правильный ответ: ' + [...s.options].find(o => o.value === q.dataset.a).textContent } }); document.getElementById(sid).textContent = 'Результат: ' + n + ' из ' + qs.length }
+      function reset(id, sid) { document.querySelectorAll('#' + id + ' .question').forEach(q => { q.className = 'question'; q.querySelector('select').value = ''; q.querySelector('.result').textContent = '' }); document.getElementById(sid).textContent = '' }
+      let left = 120, tick = null; function draw() { timer.textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0') } const timer = document.getElementById('timer'); start.onclick = () => { if (tick) return; tick = setInterval(() => { if (left) { left--; draw() } else { clearInterval(tick); tick = null } }, 1000) }; pause.onclick = () => { clearInterval(tick); tick = null }; resetTimer.onclick = () => { clearInterval(tick); tick = null; left = 120; draw() };
+    </script>
+  </body>
+
+</html>
