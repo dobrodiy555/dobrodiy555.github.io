@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprechen B2 Allgemein — Гайд по Teil 2</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --accent: #d97706;
+    --accent-light: #fef3c7;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #059669;
+    --success-light: #ecfdf5;
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: white;
+    padding: 36px 32px;
+    border-radius: var(--radius);
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  header .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  header p {
+    font-size: 1.05rem;
+    opacity: 0.92;
+    max-width: 720px;
+  }
+
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tab-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .section {
+    display: none;
+  }
+
+  .section.active {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .time-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  ul.styled-list {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+
+  ul.styled-list li {
+    margin-bottom: 8px;
+  }
+
+  .quote-box {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 14px;
+    font-style: italic;
+    color: #1e3a8a;
+  }
+
+  .tennis-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    padding: 14px;
+    border-radius: 8px;
+    margin: 14px 0;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: #92400e;
+  }
+
+  .tennis-step {
+    background: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #fcd34d;
+  }
+
+  .phrase-group {
+    margin-bottom: 24px;
+  }
+
+  .phrase-group h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--primary-light);
+  }
+
+  .phrase-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+
+  .phrase-de {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .phrase-ru {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .copy-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .copy-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .copy-btn.copied {
+    background: var(--success);
+    color: white;
+    border-color: var(--success);
+  }
+
+  .rule-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .rule-num {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .checklist-item:hover {
+    background: var(--primary-light);
+  }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .checklist-item.checked span {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+
+  .timer-widget {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .timer-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+    margin: 10px 0;
+  }
+
+  .timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 32px;
+    padding-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">GOETHE-ZERTIFIKAT &amp; TELC B2 ALLGEMEIN</div>
+    <h1>Sprechen — Teil 2: Дискуссия с партнером</h1>
+    <p>Пошаговая стратегия, готовые речевые модули (Redemittel) и чек-лист для успешного ведения диалога на актуальную социальную или повседневную тему.</p>
+    <div class="meta-bar">
+      <div class="meta-item">⏱ Длительность диалога: <strong>~5 минут</strong></div>
+      <div class="meta-item">📝 Подготовка: <strong>20 минут</strong></div>
+      <div class="meta-item">🎯 Цель: <strong>Живой обмен мнениями, а не спор до победы</strong></div>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('structure', this)">1. Пошаговая структура</button>
+    <button class="tab-btn" onclick="switchTab('redemittel', this)">2. Речевые модули (Redemittel)</button>
+    <button class="tab-btn" onclick="switchTab('rules', this)">3. Золотые правила и тренажер</button>
+  </div>
+
+  <!-- SECTION 1: STRUCTURE -->
+  <div id="structure" class="section active">
+    <div class="card">
+      <div class="step-header">
+        <span class="step-title">Шаг 1. Подготовительный этап (до экзамена)</span>
+        <span class="time-badge">20 минут на черновик</span>
+      </div>
+      <p>Вам выдают короткий текст (или тезис/вопрос с четырьмя опорными пунктами). Используйте время подготовки, чтобы составить краткий план-шпаргалку:</p>
+      <ul class="styled-list">
+        <li><strong>Суть текста:</strong> 1–2 ключевые мысли, о чем идет речь.</li>
+        <li><strong>Ваша позиция:</strong> четко определитесь, вы <em>Pro</em> (за) или <em>Contra</em> (против).</li>
+        <li><strong>Аргументация:</strong> запишите 2–3 весомых собственных аргумента.</li>
+        <li><strong>Личный опыт:</strong> вспомните короткий пример из жизни или знакомых.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="step-header">
+        <span class="step-title">Шаг 2. Начало диалога и введение в тему</span>
+        <span class="time-badge">Первые 30–60 секунд</span>
+      </div>
+      <p>Один из участников берет инициативу: коротко напоминает, о чем был текст, высказывает свое первое мнение и сразу передает слово партнеру.</p>
+      <div class="quote-box">
+        «Der Text, den wir gelesen haben, handelt ja von... Ich bin der Meinung, dass... Wie siehst du das?»
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="step-header">
+        <span class="step-title">Шаг 3. Основная часть: обмен аргументами</span>
+        <span class="time-badge">3–4 минуты</span>
+      </div>
+      <p><strong>Главный принцип:</strong> это диалог, а не два отдельных монолога! Нельзя зачитывать подготовленный текст с листа.</p>
+      <div class="tennis-flow">
+        <span>Правило «Тенниса»:</span>
+        <span class="tennis-step">1. Тезис</span>
+        <span>→</span>
+        <span class="tennis-step">2. Аргумент</span>
+        <span>→</span>
+        <span class="tennis-step">3. Пример</span>
+        <span>→</span>
+        <span class="tennis-step">4. Вопрос партнеру</span>
+      </div>
+      <ul class="styled-list">
+        <li><strong>Обязательно реагируйте на слова партнера:</strong> не пропускайте его реплики мимо ушей. Согласитесь, согласитесь частично или вежливо возразите перед тем, как выдвигать свой следующий аргумент.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="step-header">
+        <span class="step-title">Шаг 4. Заключение и подведение итогов</span>
+        <span class="time-badge">Последние 30 секунд</span>
+      </div>
+      <p>В конце необходимо подытожить беседу. Приходить к единому мнению необязательно — вы вполне можете остаться при разных точках зрения, главное красиво это резюмировать.</p>
+      <div class="quote-box">
+        «Zusammenfassend können wir sagen, dass das Thema Vor- und Nachteile hat. Für mich bleibt der Hauptpunkt..., während du eher der Ansicht bist, dass...»
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: REDEMITTEL -->
+  <div id="redemittel" class="section">
+    <div class="card">
+      <p style="margin-bottom: 16px; color: var(--text-muted);">Нажмите <strong>«Копировать»</strong> рядом с любой фразой, чтобы сохранить её в буфер обмена для своих заметок.</p>
+
+      <div class="phrase-group">
+        <h3>Выражение мнения (Meinung äußern)</h3>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Ich bin der Überzeugung, dass...</div>
+            <div class="phrase-ru">Я убежден, что...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Ich bin der Überzeugung, dass...')">Копировать</button>
+        </div>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Meiner Meinung nach spielt das eine wichtige Rolle, weil...</div>
+            <div class="phrase-ru">По моему мнению, это играет важную роль, потому что...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Meiner Meinung nach spielt das eine wichtige Rolle, weil...')">Копировать</button>
+        </div>
+      </div>
+
+      <div class="phrase-group">
+        <h3>Частичное согласие и контраргумент (Zustimmung mit Einwand)</h3>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Da hast du recht, aber auf der anderen Seite...</div>
+            <div class="phrase-ru">Ты прав, но с другой стороны...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Da hast du recht, aber auf der anderen Seite...')">Копировать</button>
+        </div>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Das sehe ich ähnlich, allerdings muss man auch bedenken, dass...</div>
+            <div class="phrase-ru">Я смотрю на это похоже, однако нужно также учитывать, что...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Das sehe ich ähnlich, allerdings muss man auch bedenken, dass...')">Копировать</button>
+        </div>
+      </div>
+
+      <div class="phrase-group">
+        <h3>Вежливое возражение (Widerspruch)</h3>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Das sehe ich ein bisschen anders...</div>
+            <div class="phrase-ru">Я вижу это немного иначе...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Das sehe ich ein bisschen anders...')">Копировать</button>
+        </div>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Ich kann deinen Standpunkt verstehen, aber ich denke eher, dass...</div>
+            <div class="phrase-ru">Я могу понять твою точку зрения, но я скорее думаю, что...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Ich kann deinen Standpunkt verstehen, aber ich denke eher, dass...')">Копировать</button>
+        </div>
+      </div>
+
+      <div class="phrase-group">
+        <h3>Вовлечение партнера (Partner einbeziehen)</h3>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Wie stehst du dazu?</div>
+            <div class="phrase-ru">Как ты к этому относишься?</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Wie stehst du dazu?')">Копировать</button>
+        </div>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Welche Erfahrungen hast du in diesem Bereich gemacht?</div>
+            <div class="phrase-ru">Какой опыт у тебя есть в этой области?</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Welche Erfahrungen hast du in diesem Bereich gemacht?')">Копировать</button>
+        </div>
+      </div>
+
+      <div class="phrase-group" style="margin-bottom: 0;">
+        <h3>Подведение итогов (Fazit)</h3>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Lass uns zusammenfassen: ...</div>
+            <div class="phrase-ru">Давай подытожим: ...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Lass uns zusammenfassen:')">Копировать</button>
+        </div>
+        <div class="phrase-item">
+          <div>
+            <div class="phrase-de">Man kann also festhalten, dass...</div>
+            <div class="phrase-ru">Итак, можно зафиксировать (сделать вывод), что...</div>
+          </div>
+          <button class="copy-btn" onclick="copyText(this, 'Man kann also festhalten, dass...')">Копировать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: RULES & PRACTICE -->
+  <div id="rules" class="section">
+    <div class="card">
+      <h2 style="color: var(--primary); margin-bottom: 16px; font-size: 1.25rem;">Золотые правила успеха</h2>
+      
+      <div class="rule-card" style="margin-bottom: 16px;">
+        <div class="rule-num">1</div>
+        <div>
+          <strong>Смотрите на партнера, а не на экзаменаторов.</strong><br>
+          Представьте, что это обычный разговор двух людей в кафе или на работе — экзаменаторы просто слушают со стороны.
+        </div>
+      </div>
+
+      <div class="rule-card" style="margin-bottom: 16px;">
+        <div class="rule-num">2</div>
+        <div>
+          <strong>Не перебивайте грубо.</strong><br>
+          Если партнер говорит слишком долго, используйте вежливые фразы для перехвата инициативы: <em>«Entschuldigung, darf ich dazu kurz etwas sagen?»</em>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">3</div>
+        <div>
+          <strong>Никогда не молчите.</strong><br>
+          Даже если тема вам незнакома, лучше объяснить мысль простыми словами и задать вопрос партнеру, чем зависнуть в тишине.
+        </div>
+      </div>
+    </div>
+
+    <div class="timer-widget">
+      <div style="font-weight: 600; color: var(--text-muted);">Таймер тренировки дискуссии (5:00)</div>
+      <div class="timer-display" id="timer">05:00</div>
+      <div class="timer-controls">
+        <button class="btn-primary" id="startBtn" onclick="toggleTimer()">Старт</button>
+        <button class="btn-secondary" onclick="resetTimer()">Сброс</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="color: var(--primary); margin-bottom: 12px; font-size: 1.2rem;">Чек-лист самопроверки при тренировке</h2>
+      <label class="checklist-item">
+        <input type="checkbox" onchange="this.parentElement.classList.toggle('checked')">
+        <span>Я коротко обозначил тему текста в начале (до 30 сек)</span>
+      </label>
+      <label class="checklist-item">
+        <input type="checkbox" onchange="this.parentElement.classList.toggle('checked')">
+        <span>Я использовал правило «Тезис → Аргумент → Пример → Вопрос»</span>
+      </label>
+      <label class="checklist-item">
+        <input type="checkbox" onchange="this.parentElement.classList.toggle('checked')">
+        <span>Я отреагировал на аргументы партнера (согласие / возражение)</span>
+      </label>
+      <label class="checklist-item">
+        <input type="checkbox" onchange="this.parentElement.classList.toggle('checked')">
+        <span>Мы подвели общий итог в конце диалога</span>
+      </label>
+    </div>
+  </div>
+
+  <footer>
+    Памятка для подготовки к экзамену B2 Allgemein (Sprechen, Teil 2)
+  </footer>
+</div>
+
+<script>
+  function switchTab(tabId, btn) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btn.textContent;
+      btn.textContent = 'Скопировано!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  }
+
+  let totalSeconds = 300;
+  let timerInterval = null;
+
+  function updateTimerDisplay() {
+    const mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+    const secs = String(totalSeconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${mins}:${secs}`;
+  }
+
+  function toggleTimer() {
+    const btn = document.getElementById('startBtn');
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      btn.textContent = 'Продолжить';
+    } else {
+      btn.textContent = 'Пауза';
+      timerInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          btn.textContent = 'Время вышло!';
+        }
+      }, 1000);
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    totalSeconds = 300;
+    updateTimerDisplay();
+    document.getElementById('startBtn').textContent = 'Старт';
+  }
+</script>
+
+</body>
+</html>
