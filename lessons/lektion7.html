@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DTB B2 – Hören und Schreiben: Telefonnotiz</title>
+    <style>
+      :root {
+        --blue: #1e4775;
+        --cyan: #01b8c7;
+        --ink: #203247;
+        --line: #d9e2eb
+      }
+
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        margin: 0;
+        background: #f3f7fa;
+        color: var(--ink);
+        font: 16px/1.55 Arial, sans-serif
+      }
+
+      header {
+        background: linear-gradient(120deg, #1e4775, #176d83);
+        color: white;
+        padding: 30px 18px
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: auto;
+        padding: 0 16px
+      }
+
+      main {
+        padding: 22px 0
+      }
+
+      .card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 17px
+      }
+
+      h1 {
+        margin: 0 0 8px
+      }
+
+      h2 {
+        color: var(--blue);
+        font-size: 21px;
+        margin: 0 0 12px
+      }
+
+      .tag {
+        font-size: 13px;
+        color: #dff7fa
+      }
+
+      button {
+        border: 0;
+        border-radius: 8px;
+        padding: 11px 15px;
+        background: var(--blue);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 4px 4px 4px 0
+      }
+
+      button.alt {
+        background: #e8eef4;
+        color: var(--blue)
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #bdcbd8;
+        border-radius: 8px;
+        font: inherit
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 12px 0 5px
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px
+      }
+
+      .full {
+        grid-column: 1/-1
+      }
+
+      .muted {
+        color: #617286
+      }
+
+      .bar {
+        height: 7px;
+        background: #e5edf3;
+        border-radius: 9px;
+        margin-top: 12px;
+        overflow: hidden
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--cyan)
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse
+      }
+
+      td,
+      th {
+        border: 1px solid var(--line);
+        padding: 8px;
+        text-align: left
+      }
+
+      th {
+        background: #eef4f8
+      }
+
+      .feedback {
+        display: none;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 12px
+      }
+
+      .good {
+        display: block;
+        background: #eaf7ef;
+        color: #167447
+      }
+
+      .bad {
+        display: block;
+        background: #fff0ef;
+        color: #a12b22
+      }
+
+      summary {
+        cursor: pointer;
+        color: var(--blue);
+        font-weight: bold
+      }
+
+      @media(max-width:600px) {
+        .grid {
+          grid-template-columns: 1fr
+        }
+
+        .full {
+          grid-column: auto
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="tag">DTB B2 Beruf · Hörverstehen + Schreiben</div>
+        <h1>Telefonnotiz: Einen Anruf verstehen und Informationen festhalten</h1>
+        <div>Sie hören eine berufliche Nachricht und tragen die wichtigsten Angaben in ein Telefonnotiz-Formular ein.
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="card">
+        <h2>1. Vorbereitung</h2>
+        <p>Lesen Sie zuerst die Situation. Hören Sie danach den Anruf und notieren Sie die Informationen. Sie können die
+          Aufnahme zweimal abspielen.</p>
+        <p><b>Situation:</b> Sie arbeiten im Büro der Firma NordTech. Ihre Kollegin Frau Berger ist gerade nicht am
+          Arbeitsplatz. Ein Kunde ruft an und bittet um einen Rückruf.</p>
+        <h3>Wichtige Wörter</h3>
+        <table>
+          <tr>
+            <th>Ausdruck</th>
+            <th>Bedeutung</th>
+          </tr>
+          <tr>
+            <td>der Rückruf</td>
+            <td>ein erneuter Anruf</td>
+          </tr>
+          <tr>
+            <td>die Durchwahl</td>
+            <td>direkte Telefonnummer einer Person</td>
+          </tr>
+          <tr>
+            <td>die Lieferverzögerung</td>
+            <td>eine Lieferung kommt später als geplant</td>
+          </tr>
+          <tr>
+            <td>der Lieferschein</td>
+            <td>Dokument zu einer Warenlieferung</td>
+          </tr>
+          <tr>
+            <td>dringend</td>
+            <td>sehr wichtig; ohne Verzögerung</td>
+          </tr>
+        </table>
+      </section>
+      <section class="card">
+        <h2>2. Hörverstehen</h2>
+        <p class="muted">Die Wiedergabe nutzt die Sprachfunktion Ihres Browsers. Wählen Sie nach Möglichkeit eine
+          deutsche Stimme.</p>
+        <button id="play">▶ Anruf abspielen</button><button class="alt" id="pause">Ⅱ Pause</button><button class="alt"
+          id="stop">■ Stopp</button><button class="alt" id="again">↻ Von vorne</button>
+        <div class="grid">
+          <div><label for="voice">Stimme</label><select id="voice">
+              <option value="">Automatisch (Deutsch)</option>
+            </select></div>
+          <div><label for="rate">Sprechtempo: <span id="rv">0.9</span></label><input id="rate" type="range" min=".7"
+              max="1.15" step=".05" value=".9"></div>
+        </div>
+        <p class="muted">Tipp: Hören Sie beim ersten Mal nur zu. Beim zweiten Mal ergänzen Sie Ihre Notizen. Falls keine
+          deutsche Stimme verfügbar ist, prüfen Sie die Sprach- bzw. Vorleseeinstellungen Ihres Geräts.</p>
+        <div class="bar"><span id="bar"></span></div>
+      </section>
+      <section class="card">
+        <h2>3. Telefonnotiz ausfüllen</h2>
+        <p>Tragen Sie die Informationen ein. Wenn Sie etwas nicht hören, lassen Sie das Feld zunächst frei.</p>
+        <div class="grid" id="fields">
+          <div><label for="caller">Name des Anrufers</label><input id="caller" placeholder="Vor- und Nachname"></div>
+          <div><label for="company">Firma</label><input id="company" placeholder="Name der Firma"></div>
+          <div><label for="phone">Telefonnummer</label><input id="phone" placeholder="Telefonnummer"></div>
+          <div><label for="person">Gesprächspartnerin</label><input id="person" placeholder="Wer soll zurückrufen?">
+          </div>
+          <div><label for="subject">Betreff / Anliegen</label><input id="subject" placeholder="Worum geht es?"></div>
+          <div><label for="deadline">Gewünschter Rückruf</label><input id="deadline" placeholder="Wann?"></div>
+          <div class="full"><label for="details">Weitere wichtige Informationen</label><textarea id="details" rows="3"
+              placeholder="Was ist passiert? Welche Unterlagen werden benötigt?"></textarea></div>
+        </div>
+        <button id="check">Antworten überprüfen</button><button class="alt" id="clear">Felder leeren</button>
+        <div id="result" class="feedback"></div>
+        <details>
+          <summary>Musterlösung anzeigen</summary>
+          <table>
+            <tr>
+              <th>Angabe</th>
+              <th>Information</th>
+            </tr>
+            <tr>
+              <td>Anrufer</td>
+              <td>Martin Scholz</td>
+            </tr>
+            <tr>
+              <td>Firma</td>
+              <td>Scholz &amp; Partner GmbH</td>
+            </tr>
+            <tr>
+              <td>Telefonnummer</td>
+              <td>030 4587 2190</td>
+            </tr>
+            <tr>
+              <td>Gesprächspartnerin</td>
+              <td>Frau Berger</td>
+            </tr>
+            <tr>
+              <td>Anliegen</td>
+              <td>Verspätete Lieferung / fehlende Unterlagen</td>
+            </tr>
+            <tr>
+              <td>Rückruf</td>
+              <td>Heute bis spätestens 15:00 Uhr</td>
+            </tr>
+            <tr>
+              <td>Weitere Informationen</td>
+              <td>Von den Bürostühlen fehlen zwei Pakete. Der Kunde benötigt eine korrigierte Rechnung und eine Kopie
+                des Lieferscheins.</td>
+            </tr>
+          </table>
+        </details>
+      </section>
+      <section class="card">
+        <h2>4. Schreiben: Eine kurze Nachricht an Frau Berger</h2>
+        <p>Ihre Kollegin ist noch nicht zurück. Schreiben Sie ihr eine kurze interne Nachricht. Fassen Sie die
+          wichtigsten Informationen aus dem Anruf zusammen.</p>
+        <label for="message">Ihre Nachricht (ca. 50–70 Wörter)</label><textarea id="message" rows="6"
+          placeholder="Hallo Frau Berger,&#10;..."></textarea><button class="alt" id="sample">Beispiel anzeigen</button>
+        <div id="sampleText" style="display:none;background:#f2f7fa;padding:14px;border-radius:9px">
+          <b>Beispiel:</b><br>Hallo Frau Berger,<br>Herr Martin Scholz von der Scholz &amp; Partner GmbH hat angerufen.
+          Es geht um die verspätete Lieferung der Bürostühle. Zwei Pakete fehlen noch. Außerdem benötigt er eine
+          korrigierte Rechnung und eine Kopie des Lieferscheins. Bitte rufen Sie ihn heute bis spätestens 15:00 Uhr
+          unter 030 4587 2190 zurück.<br>Viele Grüße
+        </div>
+      </section>
+      <section class="card">
+        <h2>5. Selbstkontrolle</h2>
+        <ul>
+          <li>Habe ich den Namen und die Firma richtig notiert?</li>
+          <li>Habe ich die Telefonnummer sorgfältig übertragen?</li>
+          <li>Habe ich den Grund des Anrufs verständlich zusammengefasst?</li>
+          <li>Habe ich eine konkrete Rückrufzeit notiert?</li>
+          <li>Ist meine Nachricht kurz, höflich und vollständig?</li>
+        </ul>
+        <p class="muted">Lernziel: Sie können die zentralen Angaben eines beruflichen Telefonats verstehen, strukturiert
+          notieren und schriftlich an eine Kollegin oder einen Kollegen weitergeben.</p>
+      </section>
+    </main>
+    <script>
+      const text = `Guten Tag, mein Name ist Martin Scholz von der Scholz und Partner GmbH. Ich rufe wegen unserer Bestellung bei Ihnen an. Es geht um die Lieferung der Bürostühle. Die Lieferung ist gestern angekommen, aber leider fehlen noch zwei Pakete. Außerdem haben wir eine Rechnung erhalten, auf der die Anzahl der gelieferten Stühle nicht stimmt. Wir benötigen deshalb eine korrigierte Rechnung und außerdem eine Kopie des Lieferscheins. Könnten Sie bitte Frau Berger aus dem Kundenservice ausrichten, dass sie mich zurückruft? Meine Telefonnummer lautet null drei null, vier fünf acht sieben, zwei eins neun null. Ich bin heute bis fünfzehn Uhr erreichbar. Es wäre sehr nett, wenn sie mich noch heute zurückrufen könnte, weil wir die Stühle dringend für die neuen Arbeitsplätze brauchen. Vielen Dank. Auf Wiederhören.`;
+      let voices = []; function load() { voices = speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith('de')); voice.innerHTML = '<option value="">Automatisch (Deutsch)</option>'; voices.forEach((v, i) => voice.add(new Option(v.name + ' (' + v.lang + ')', i))) } load(); speechSynthesis.onvoiceschanged = load;
+      function speak() { speechSynthesis.cancel(); let u = new SpeechSynthesisUtterance(text); u.lang = 'de-DE'; u.rate = +rate.value; if (voice.value !== '' && voices[+voice.value]) u.voice = voices[+voice.value]; u.onstart = () => bar.style.width = '10%'; u.onend = () => bar.style.width = '100%'; speechSynthesis.speak(u) }
+      play.onclick = () => speechSynthesis.paused ? speechSynthesis.resume() : speak(); pause.onclick = () => speechSynthesis.pause(); stop.onclick = () => { speechSynthesis.cancel(); bar.style.width = '0%' }; again.onclick = speak; rate.oninput = () => rv.textContent = rate.value;
+      const expected = { caller: ['martin scholz'], company: ['scholz & partner gmbh', 'scholz und partner gmbh'], phone: ['030 4587 2190', '03045872190'], person: ['frau berger'], subject: ['verspätete lieferung', 'fehlende unterlagen', 'lieferung bürostühle'], deadline: ['heute bis 15:00 uhr', 'heute bis spätestens 15:00 uhr', '15:00 uhr'], details: ['zwei pakete', 'korrigierte rechnung', 'kopie des lieferscheins'] };
+      function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim() }
+      check.onclick = () => { let n = 0, miss = []; for (let [id, arr] of Object.entries(expected)) { let v = norm(document.getElementById(id).value); if (arr.some(a => v.includes(norm(a)))) n++; else miss.push(document.querySelector('label[for="' + id + '"]').textContent) } result.className = 'feedback ' + (n === 7 ? 'good' : 'bad'); result.textContent = `${n} von 7 Bereichen richtig oder ausreichend ausgefüllt.` + (miss.length ? ' Noch prüfen: ' + miss.join(', ') + '.' : ' Sehr gut! Vergleichen Sie Ihre Angaben mit der Musterlösung.') };
+      clear.onclick = () => { fields.querySelectorAll('input,textarea').forEach(x => x.value = ''); result.className = 'feedback'; result.textContent = '' }; sample.onclick = () => sampleText.style.display = sampleText.style.display === 'none' ? 'block' : 'none';
+    </script>
+  </body>
+
+</html>
