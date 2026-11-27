@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DTB B2 Beruf &ndash; Pr&uuml;fungstraining</title>
+    <style>
+      :root {
+        --b: #1e4775;
+        --c: #01b8c7;
+        --ink: #203247;
+        --line: #d9e2eb
+      }
+
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        margin: 0;
+        background: #f3f7fa;
+        color: var(--ink);
+        font: 16px/1.55 Arial
+      }
+
+      header {
+        background: linear-gradient(120deg, #1e4775, #176d83);
+        color: white;
+        padding: 30px 18px
+      }
+
+      .wrap {
+        max-width: 950px;
+        margin: auto;
+        padding: 0 16px
+      }
+
+      main {
+        padding: 22px 0
+      }
+
+      h1 {
+        font-size: clamp(25px, 4vw, 36px);
+        margin: 5px 0
+      }
+
+      h2 {
+        color: var(--b);
+        font-size: 21px;
+        margin: 0 0 12px
+      }
+
+      h3 {
+        font-size: 17px;
+        margin: 18px 0 8px
+      }
+
+      .card {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 17px
+      }
+
+      .tag {
+        color: #c8f1f3;
+        font-size: 13px;
+        font-weight: bold
+      }
+
+      .muted {
+        color: #65778a
+      }
+
+      .small {
+        font-size: 13px
+      }
+
+      button {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 15px;
+        background: var(--b);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 4px
+      }
+
+      button.alt {
+        background: #e8eef4;
+        color: var(--b)
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #bdcbd8;
+        border-radius: 8px;
+        font: inherit
+      }
+
+      .sb-answer {
+        width: auto;
+        max-width: 100%;
+        padding: 5px 8px;
+        margin: 3px
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 10px 0 5px
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px
+      }
+
+      .full {
+        grid-column: 1/-1
+      }
+
+      .opt {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px;
+        margin: 6px 0;
+        font-weight: normal
+      }
+
+      .opt input,
+      .check input {
+        width: auto
+      }
+
+      .feedback {
+        display: none;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 12px
+      }
+
+      .good {
+        display: block;
+        background: #eaf7ef;
+        color: #167447
+      }
+
+      .bad {
+        display: block;
+        background: #fff0ef;
+        color: #a12b22
+      }
+
+      .bar {
+        height: 7px;
+        background: #e5edf3;
+        border-radius: 8px;
+        overflow: hidden
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--c)
+      }
+
+      .timer {
+        font-size: 32px;
+        font-weight: bold;
+        color: var(--b)
+      }
+
+      summary {
+        cursor: pointer;
+        color: var(--b);
+        font-weight: bold
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse
+      }
+
+      td,
+      th {
+        border: 1px solid var(--line);
+        padding: 8px;
+        text-align: left
+      }
+
+      th {
+        background: #eef4f8
+      }
+
+      .check label {
+        font-weight: normal;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start
+      }
+
+      @media(max-width:620px) {
+        .grid {
+          grid-template-columns: 1fr
+        }
+
+        .full {
+          grid-column: auto
+        }
+
+        .card {
+          padding: 16px
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="tag">DEUTSCH-TEST FÜR DEN BERUF B2 · LEKTION 8</div>
+        <h1>Pr&uuml;fungstraining: Lesen, H&ouml;ren und Schreiben</h1>
+        <p>&Uuml;ben Sie wichtige Aufgabenformate f&uuml;r den DTB B2: Sprachbausteine, Leseverstehen,
+          H&ouml;rverstehen, Schreiben und Sprechen.</p>
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="card">
+        <h2>Ziele dieser Unterrichtseinheit</h2>
+        <ul>
+          <li>Wichtige Sprachbausteine im beruflichen Kontext passend einsetzen.</li>
+          <li>Informationen in kurzen beruflichen Texten finden und verstehen.</li>
+          <li>Termine, Namen und Arbeitsauftr&auml;ge aus einer Nachricht heraush&ouml;ren.</li>
+          <li>Einen strukturierten Forumsbeitrag schreiben und eine gemeinsame L&ouml;sung besprechen.</li>
+        </ul>
+        <p class="muted small">Dies sind verk&uuml;rzte Trainingsaufgaben im Stil typischer Pr&uuml;fungsformate, keine
+          offiziellen DTB-B2-Pr&uuml;fungsaufgaben.</p>
+      </section>
+
+      <section class="card">
+        <div class="tag" style="color:#176477">SPRACHBAUSTEINE &middot; L&Uuml;CKENTEXT</div>
+        <h2>Sprachbausteine: Eine Information im Betrieb</h2>
+        <p>Erg&auml;nzen Sie die Mitteilung. W&auml;hlen Sie f&uuml;r jede L&uuml;cke das passende Wort.</p>
+        <div style="background:#f2f6f9;padding:14px;border-radius:9px">
+          <p>Liebe Kolleginnen und Kollegen,</p>
+          <p>ab n&auml;chster Woche wird unser Besprechungsraum renoviert. <select class="sb-answer"
+              data-answer="deshalb" aria-label="L&uuml;cke 1">
+              <option value="">(1) ausw&auml;hlen</option>
+              <option>deshalb</option>
+              <option>obwohl</option>
+              <option>trotzdem</option>
+            </select> finden die Teamsitzungen vor&uuml;bergehend im Raum 3 statt. Bitte bringen Sie Ihre Unterlagen
+            <select class="sb-answer" data-answer="vollst&auml;ndig" aria-label="L&uuml;cke 2">
+              <option value="">(2) ausw&auml;hlen</option>
+              <option>vollst&auml;ndig</option>
+              <option>vollst&auml;ndige</option>
+              <option>Vollst&auml;ndigkeit</option>
+            </select> mit, damit wir p&uuml;nktlich beginnen k&ouml;nnen. Die Arbeiten sollen bis Ende des Monats
+            dauern, <select class="sb-answer" data-answer="sodass" aria-label="L&uuml;cke 3">
+              <option value="">(3) ausw&auml;hlen</option>
+              <option>dennoch</option>
+              <option>sodass</option>
+              <option>bevor</option>
+            </select> es zu kurzfristigen &Auml;nderungen kommen kann. Sollte der Raum nicht verf&uuml;gbar sein,
+            informieren wir Sie <select class="sb-answer" data-answer="rechtzeitig" aria-label="L&uuml;cke 4">
+              <option value="">(4) ausw&auml;hlen</option>
+              <option>rechtzeitig</option>
+              <option>rechtzeitige</option>
+              <option>Rechtzeit</option>
+            </select> per E-Mail. Bitte pr&uuml;fen Sie Ihre Nachrichten regelm&auml;&szlig;ig, <select
+              class="sb-answer" data-answer="damit" aria-label="L&uuml;cke 5">
+              <option value="">(5) ausw&auml;hlen</option>
+              <option>damit</option>
+              <option>obwohl</option>
+              <option>w&auml;hrend</option>
+            </select> keine wichtige Information verloren geht. Bei Fragen k&ouml;nnen Sie sich <select
+              class="sb-answer" data-answer="an" aria-label="L&uuml;cke 6">
+              <option value="">(6) ausw&auml;hlen</option>
+              <option>an</option>
+              <option>auf</option>
+              <option>mit</option>
+            </select> das Sekretariat wenden.
+          </p>
+          <p>Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung.</p>
+        </div><button type="button" id="checkSprachbausteine">Antworten &uuml;berpr&uuml;fen</button>
+        <div id="sprachbausteineResult" class="feedback" aria-live="polite"></div>
+      </section>
+      <section class="card">
+        <div class="tag" style="color:#176477">TEIL 1 · LESEN</div>
+        <h2>1. Eine interne Mitteilung verstehen</h2>
+        <p>Lesen Sie den Text und wählen Sie die passende Antwort.</p>
+        <div style="background:#f2f6f9;padding:14px;border-radius:9px"><b>Betreff: Neue Regelung für die
+            Urlaubsplanung</b>
+          <p>Liebe Kolleginnen und Kollegen, ab dem kommenden Monat wird die Urlaubsplanung digital organisiert. Alle
+            Mitarbeitenden werden gebeten, ihre Urlaubswünsche bis spätestens zum 15. des laufenden Monats im
+            Personalportal einzutragen. Die Teamleitungen prüfen anschließend, ob die gewünschten Zeiträume mit der
+            Personalplanung vereinbar sind. Eine Genehmigung gilt erst dann als verbindlich, wenn sie schriftlich
+            bestätigt wurde.</p>
+          <p>Bitte beachten Sie, dass in den Sommermonaten nicht alle Urlaubswünsche gleichzeitig berücksichtigt werden
+            können. Bei Überschneidungen werden zunächst die betrieblichen Anforderungen geprüft. Bei Fragen wenden Sie
+            sich bitte an die Personalabteilung.</p>
+        </div>
+        <p><b>1. Bis wann müssen die Mitarbeitenden ihre Urlaubswünsche eintragen?</b></p><label class="opt"><input
+            type="radio" name="r1" value="a"> Bis zum letzten Tag des Monats</label><label class="opt"><input
+            type="radio" name="r1" value="b"> Bis zum 15. des Monats</label><label class="opt"><input type="radio"
+            name="r1" value="c"> Sobald die Teamleitung danach fragt</label>
+        <p><b>2. Wann ist der Urlaub verbindlich genehmigt?</b></p><label class="opt"><input type="radio" name="r2"
+            value="a"> Wenn der Wunsch im Portal steht</label><label class="opt"><input type="radio" name="r2"
+            value="b"> Wenn die Kollegen zustimmen</label><label class="opt"><input type="radio" name="r2" value="c">
+          Wenn eine schriftliche Bestätigung vorliegt</label>
+        <p><b>3. Was passiert bei Überschneidungen?</b></p><label class="opt"><input type="radio" name="r3" value="a">
+          Betriebliche Anforderungen werden berücksichtigt</label><label class="opt"><input type="radio" name="r3"
+            value="b"> Alle Anträge werden abgelehnt</label><label class="opt"><input type="radio" name="r3" value="c">
+          Das Portal wird geschlossen</label>
+        <button onclick="checkRead()">Antworten überprüfen</button>
+        <div id="readResult" class="feedback"></div>
+        <details>
+          <summary>Lösungen und Begründungen</summary>
+          <ol>
+            <li>b – Frist ist der 15. des laufenden Monats.</li>
+            <li>c – Erst die schriftliche Bestätigung ist verbindlich.</li>
+            <li>a – Bei Überschneidungen zählen die betrieblichen Anforderungen.</li>
+          </ol>
+        </details>
+      </section>
+
+      <section class="card">
+        <div class="tag" style="color:#176477">TEIL 2 · HÖREN</div>
+        <h2>2. Eine Nachricht aus dem Büro</h2>
+        <p>Sie hören eine Nachricht Ihrer Kollegin. Für eine Prüfungssimulation hören Sie möglichst nur einmal zu.</p>
+        <div class="grid">
+          <div><label for="voice">Deutsche Stimme</label><select id="voice">
+              <option value="">Automatisch</option>
+            </select></div>
+          <div><label for="speed">Sprechtempo: <span id="sv">0.9</span></label><input id="speed" type="range" min=".7"
+              max="1.15" step=".05" value=".9"></div>
+        </div><button id="play">▶ Nachricht abspielen</button><button class="alt" id="stop">Stopp</button>
+        <div class="bar"><span id="audioBar"></span></div>
+        <div class="grid">
+          <div><label for="h1">Name der Anruferin</label><input id="h1"></div>
+          <div><label for="h2">Abteilung</label><input id="h2"></div>
+          <div><label for="h3">Termin</label><input id="h3" placeholder="Tag und Uhrzeit"></div>
+          <div><label for="h4">Raum</label><input id="h4"></div>
+          <div class="full"><label for="h5">Was sollen die Teilnehmenden vorbereiten?</label><textarea id="h5"
+              rows="2"></textarea></div>
+        </div><button onclick="checkListen()">Hörverstehen überprüfen</button>
+        <div id="listenResult" class="feedback"></div>
+        <details>
+          <summary>Transkript und Musterlösung</summary>
+          <p>Guten Morgen, hier ist Laura Schneider aus der Personalabteilung. Ich möchte Sie daran erinnern, dass die
+            Besprechung zur neuen Weiterbildung am kommenden Dienstag um zehn Uhr stattfindet. Wir treffen uns im
+            Konferenzraum 2 im ersten Stock. Bitte bringen Sie eine kurze Übersicht über Ihre bisherigen Schulungen mit.
+            Außerdem wäre es hilfreich, wenn Sie sich vorher überlegen, welche Themen für Ihre berufliche Entwicklung
+            besonders wichtig sind. Falls Sie nicht teilnehmen können, informieren Sie mich bitte bis Freitag. Vielen
+            Dank und auf Wiederhören.</p>
+          <table>
+            <tr>
+              <th>Angabe</th>
+              <th>Lösung</th>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>Laura Schneider</td>
+            </tr>
+            <tr>
+              <td>Abteilung</td>
+              <td>Personalabteilung</td>
+            </tr>
+            <tr>
+              <td>Termin</td>
+              <td>kommender Dienstag, 10 Uhr</td>
+            </tr>
+            <tr>
+              <td>Raum</td>
+              <td>Konferenzraum 2, erster Stock</td>
+            </tr>
+            <tr>
+              <td>Vorbereitung</td>
+              <td>Übersicht über bisherige Schulungen; Gedanken zu wichtigen Weiterbildungsthemen</td>
+            </tr>
+          </table>
+        </details>
+      </section>
+
+      <section class="card">
+        <div class="tag" style="color:#176477">TEIL 3 · SCHREIBEN</div>
+        <h2>3. Auf einen Forumsbeitrag reagieren</h2>
+        <blockquote style="margin:0;background:#f2f6f9;padding:13px;border-radius:8px">„Sollten Unternehmen ihren
+          Mitarbeitenden mehr Weiterbildung w&auml;hrend der Arbeitszeit erm&ouml;glichen?“</blockquote>
+        <p>Schreiben Sie einen Forumsbeitrag (ca. 120–150 Wörter). Äußern Sie Ihre Meinung, nennen Sie mindestens zwei
+          Argumente, gehen Sie auf einen Nachteil ein und schlagen Sie einen Kompromiss vor.</p><label for="writing">Ihr
+          Forumsbeitrag</label><textarea id="writing" rows="9" placeholder="Meiner Meinung nach ..."></textarea><button
+          class="alt" id="sampleBtn">Musterlösung anzeigen</button>
+        <div id="sample" style="display:none;background:#f2f6f9;padding:14px;border-radius:9px">
+          <p>Meiner Meinung nach sollten Unternehmen ihren Mitarbeitenden regelm&auml;&szlig;ig Weiterbildung
+            w&auml;hrend der Arbeitszeit erm&ouml;glichen. So k&ouml;nnen Besch&auml;ftigte neue Kenntnisse erwerben,
+            die sie direkt bei ihren Aufgaben einsetzen. Gleichzeitig zeigt der Betrieb, dass ihm die fachliche
+            Entwicklung seines Teams wichtig ist.</p>
+          <p>Ein m&ouml;glicher Nachteil ist, dass w&auml;hrend eines Kurses weniger Zeit f&uuml;r die t&auml;gliche
+            Arbeit bleibt. Au&szlig;erdem sind l&auml;ngere Schulungen nicht in jeder Abteilung leicht zu organisieren.
+          </p>
+          <p>Ich halte deshalb kurze, gut geplante Lernangebote f&uuml;r sinnvoll. Mitarbeitende k&ouml;nnten zum
+            Beispiel einige Stunden pro Monat an passenden Kursen teilnehmen. Die F&uuml;hrungskr&auml;fte sollten die
+            Termine fr&uuml;h abstimmen und darauf achten, dass wichtige Aufgaben weiterhin verteilt sind. So
+            profitieren sowohl die Besch&auml;ftigten als auch das Unternehmen.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="tag" style="color:#176477">TEIL 4 · SPRECHEN</div>
+        <h2>4. Gemeinsam eine Lösung finden</h2>
+        <p><b>Situation:</b> In Ihrem Unternehmen kommen wichtige Informationen häufig zu spät bei den Mitarbeitenden
+          an. Besprechen Sie, wie die interne Kommunikation verbessert werden kann, und einigen Sie sich auf konkrete
+          Maßnahmen.</p>
+        <h3>Besprechen Sie folgende Punkte:</h3>
+        <ul>
+          <li>Welche Probleme gibt es derzeit?</li>
+          <li>Welche Kommunikationswege könnten genutzt werden?</li>
+          <li>Wer ist für die Weitergabe der Informationen verantwortlich?</li>
+          <li>Wie können alle Mitarbeitenden erreicht werden?</li>
+          <li>Wie kann man überprüfen, ob die Maßnahmen funktionieren?</li>
+        </ul>
+        <div class="grid">
+          <div><b>Ihre Rolle</b>
+            <p>Sie finden, dass ein wöchentlicher Newsletter sinnvoll wäre. Er sollte kurz sein und die wichtigsten
+              Informationen enthalten.</p>
+          </div>
+          <div><b>Rolle der Gesprächspartnerin / des Gesprächspartners</b>
+            <p>Die andere Person bevorzugt kurze Teambesprechungen. Sie befürchtet, dass ein Newsletter nicht von allen
+              gelesen wird.</p>
+          </div>
+        </div>
+        <h3>Nützliche Redemittel</h3>
+        <table>
+          <tr>
+            <td>Ich würde vorschlagen, dass …</td>
+            <td>Я бы предложил(а)…</td>
+          </tr>
+          <tr>
+            <td>Ein Vorteil wäre, dass …</td>
+            <td>Преимущество в том, что…</td>
+          </tr>
+          <tr>
+            <td>Da bin ich teilweise anderer Meinung.</td>
+            <td>Здесь я отчасти другого мнения.</td>
+          </tr>
+          <tr>
+            <td>Wie wäre es, wenn wir …?</td>
+            <td>Что, если мы…?</td>
+          </tr>
+          <tr>
+            <td>Wir könnten uns darauf einigen, dass …</td>
+            <td>Мы могли бы договориться, что…</td>
+          </tr>
+          <tr>
+            <td>Damit wären beide Seiten berücksichtigt.</td>
+            <td>Так будут учтены обе стороны.</td>
+          </tr>
+        </table>
+        <div class="grid">
+          <div>
+            <div class="timer" id="timer">02:00</div><button id="start">Start</button><button class="alt"
+              id="pause">Pause</button><button class="alt" id="reset">Zurücksetzen</button>
+          </div>
+          <div><label for="notes">Ihre Stichwörter</label><textarea id="notes" rows="4"
+              placeholder="Problem – Vorschlag – Vorteil – Nachteil – Kompromiss"></textarea></div>
+        </div>
+      </section>
+
+
+    </main>
+    <script>
+      const aud = "Guten Morgen, hier ist Laura Schneider aus der Personalabteilung. Ich möchte Sie daran erinnern, dass die Besprechung zur neuen Weiterbildung am kommenden Dienstag um zehn Uhr stattfindet. Wir treffen uns im Konferenzraum zwei im ersten Stock. Bitte bringen Sie eine kurze Übersicht über Ihre bisherigen Schulungen mit. Außerdem wäre es hilfreich, wenn Sie sich vorher überlegen, welche Themen für Ihre berufliche Entwicklung besonders wichtig sind. Falls Sie nicht teilnehmen können, informieren Sie mich bitte bis Freitag. Vielen Dank und auf Wiederhören.";
+      let vs = []; function voices() { vs = speechSynthesis.getVoices().filter(v => v.lang.toLowerCase().startsWith("de")); voice.innerHTML = '<option value="">Automatisch</option>'; vs.forEach((v, i) => voice.add(new Option(v.name + " (" + v.lang + ")", i))) } voices(); speechSynthesis.onvoiceschanged = voices;
+      const playButton = document.getElementById("play"); const stopButton = document.getElementById("stop"); const progressBar = document.getElementById("audioBar"); let playbackId = 0; let currentUtterance = null; function stopPlayback() { playbackId++; speechSynthesis.cancel(); currentUtterance = null; progressBar.style.width = "0%" } playButton.addEventListener("click", () => { stopPlayback(); const id = ++playbackId; const utterance = new SpeechSynthesisUtterance(aud); utterance.lang = "de-DE"; utterance.rate = +document.getElementById("speed").value; if (voice.value !== "" && vs[+voice.value]) utterance.voice = vs[+voice.value]; currentUtterance = utterance; utterance.onstart = () => { if (id === playbackId) progressBar.style.width = "10%" }; utterance.onend = () => { if (id === playbackId) { progressBar.style.width = "100%"; currentUtterance = null } }; utterance.onerror = () => { if (id === playbackId) { progressBar.style.width = "0%"; currentUtterance = null } }; speechSynthesis.speak(utterance) }); stopButton.addEventListener("click", stopPlayback); document.getElementById("speed").addEventListener("input", event => document.getElementById("sv").textContent = event.target.value); document.getElementById("checkSprachbausteine").addEventListener("click", () => { const answers = [...document.querySelectorAll(".sb-answer")]; const correct = answers.filter(answer => answer.value === answer.dataset.answer).length; const result = document.getElementById("sprachbausteineResult"); result.className = "feedback " + (correct === answers.length ? "good" : "bad"); result.textContent = correct + " von " + answers.length + " L\u00fccken richtig." });
+      function checkRead() { let a = { r1: "b", r2: "c", r3: "a" }, n = 0; for (let k in a) { let x = document.querySelector('input[name="' + k + '"]:checked'); if (x && x.value === a[k]) n++ } readResult.className = "feedback " + (n === 3 ? "good" : "bad"); readResult.textContent = n + " von 3 Fragen richtig beantwortet." }
+      function norm(s) { return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim() }
+      function checkListen() { let a = [["h1", ["laura schneider"]], ["h2", ["personalabteilung"]], ["h3", ["dienstag", "10"]], ["h4", ["konferenzraum 2", "konferenzraum zwei"]], ["h5", ["schulungen", "weiterbildungsthemen"]]], n = 0; a.forEach(([id, keys]) => { let v = norm(document.getElementById(id).value); if (keys.every(k => v.includes(norm(k))) || (id === "h5" && keys.some(k => v.includes(norm(k))))) n++ }); listenResult.className = "feedback " + (n >= 4 ? "good" : "bad"); listenResult.textContent = n + " von 5 Angaben ausreichend erfasst. Vergleichen Sie Ihre Antworten mit dem Transkript." }
+      sampleBtn.onclick = () => sample.style.display = sample.style.display === "none" ? "block" : "none";
+      let rem = 120, it = null; function clock() { timer.textContent = String(Math.floor(rem / 60)).padStart(2, "0") + ":" + String(rem % 60).padStart(2, "0") } start.onclick = () => { if (it) return; it = setInterval(() => { if (rem > 0) { rem--; clock() } else { clearInterval(it); it = null } }, 1000) }; pause.onclick = () => { clearInterval(it); it = null }; reset.onclick = () => { clearInterval(it); it = null; rem = 120; clock() };
+    </script>
+  </body>
+
+</html>
