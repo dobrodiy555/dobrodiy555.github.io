@@ -102,10 +102,10 @@ function arrayInArray(haystack, needle) {
 
 function user_move() {
   // play button click sound if necessary
-  var snd = new Audio("sounds/click.wav");
+  var snd = new Audio("tictactoe/sounds/click.wav");
   if (sndActive == "on") snd.play();
 
-  this.src = "img/x.gif"; // display X image when clicking on any field
+  this.src = "tictactoe/img/x.gif"; // display X image when clicking on any field
   var userMove = $(this).attr("id");
 
   // remove from fields
@@ -209,9 +209,9 @@ function computer_move() {
 
   // show comp move on frontend as zero image with a bit of delay to make it more realistic
   setTimeout(() => {
-    $("#" + compMove).attr("src", "img/o.gif");
+    $("#" + compMove).attr("src", "tictactoe/img/o.gif");
     // play sound
-    let oppMove = new Audio("sounds/oppmove.mp3");
+    let oppMove = new Audio("tictactoe/sounds/oppmove.mp3");
     if (sndActive == "on") oppMove.play();
     // delete event handlers
     var elem = document.getElementById(compMove);
@@ -243,7 +243,7 @@ function check_game_over() {
     }
 
     // play sound
-    let victory = new Audio("sounds/victory.mp3");
+    let victory = new Audio("tictactoe/sounds/victory.mp3");
     if (sndActive == "on") victory.play();
 
     // set cookie, show score
@@ -269,7 +269,7 @@ function check_game_over() {
     }
 
     // play sound
-    let fiasko = new Audio("sounds/fiasco.mp3");
+    let fiasko = new Audio("tictactoe/sounds/fiasco.mp3");
     if (sndActive == "on") fiasko.play();
 
     // set cookie, show score
@@ -285,7 +285,7 @@ function check_game_over() {
   // check for tie
   if (!arr_with_fields.length && !game_done) {
     // play sound
-    let drawSound = new Audio("sounds/draw.mp3");
+    let drawSound = new Audio("tictactoe/sounds/draw.mp3");
     if (sndActive == "on") drawSound.play();
 
     result_field.innerHTML = "Ничья!";
